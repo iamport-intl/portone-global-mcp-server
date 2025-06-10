@@ -1,0 +1,283 @@
+openapi: 3.0.0
+info:
+  title: Refund APIs
+  version: 1.0.0
+servers:
+  - url: https://api.portone.cloud
+paths:
+  /api/refund/{portone_order_ref}:
+    post:
+      tags:
+        - Refund APIs
+      summary: Create Refund
+      description: |-
+        Create Refund for the transaction created on PortOne. Merchant can either create the full or partial refund. Few PSPs do not support refunds or partial refunds. Please refer PortOne docs for additional information. The response body contains the amount to refund and the array of all refunds performed.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                amount:
+                  description: The amount you want to refund (ignored if a refund of type 'full' is requested)
+                  type: number
+                  format: double
+                channel:
+                  description: The payment channel key used to make the payment for the transaction
+                  type: string
+                description:
+                  description: The description for the refund
+                  type: string
+                environment:
+                  description: The environment of the transaction is either live OR sandbox
+                  type: string
+                  enum: [live, sandbox]
+                refund_type:
+                  description: The type of the refund indicates whether a full or partial refund is being requested. If the refund type is 'full', the 'amount' field is ignored
+                  type: string
+                  enum: [full, partial]
+                refund_reason:
+                  description: The reason for the refund
+                  type: string
+              type: object
+              required:
+                - amount
+                - channel
+                - description
+                - environment
+                - refund_type
+                - refund_reason
+              example:
+                amount: 400
+                channel: OMISE
+                description: Some desc
+                environment: sandbox
+                refund_type: partial
+                refund_reason: some reason
+      parameters:
+        - name: X-Portone-Client-Key
+          in: header
+          schema:
+            type: string
+          example: ShgshjhgHdg
+        - name: Authorization
+          in: header
+          description: The `Authorization` header is used to include the JWT for authenticating API requests; learn how to generate the token <a href="/docs/jwt-authentication" target="_blank">in this guide</a>
+          schema:
+            type: string
+          example: >-
+            Bearer
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjI2NDk3NjU5MDEsImlhdCI6MTY0OTc2NTkwMSwiaXNzIjoiQ0hBSVBBWSIsInN1YiI6Ik5QU2taWlllZkd5S3ZCeGkifQ.VHicuV4dvfp8skktlcRVJNS_WwsD_MtKB4JLBbLWOcQ
+        - name: portone_order_ref
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 27TcJzyjL1y0eNVLEUa8pA8qAsJ
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                properties:
+                  refundDetails:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/RefundContent'
+                    description: The array of Refund details
+                  amountToRefund:
+                    description: The amount remaining to refund
+                    type: number
+                    format: double
+              example: |-
+                {
+                  "amountToRefund": 60000,
+                  "refundDetails": [
+                      {
+                          "refund_date": "2022-06-30T06:20:41.052983Z",
+                          "refund_id": "",
+                          "psp_refund_id": "13785967",
+                          "amount": 40000,
+                          "currency": "VND",
+                          "refund_status": "SUCCESS",
+                          "refund_type": "partial",
+                          "refund_reason": "some reason",
+                          "merchant_id": "11"
+                      }
+                  ]
+                }
+        '401':
+          description: Failure response
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    description: The description of the API request execution result
+                    type: string
+                  status_code:
+                    description: The status_code for transaction of transaction creation
+                    type: string
+                  status_reason:
+                    description: The status_reason for transaction of transaction creation
+                    type: string
+              example: |-
+                {
+                  "message": "key is a required field",
+                  "status_code": "4010",
+                  "status_reason": "INVALID_UNAUTHORISED_TRANSACTION_IAMPORTKEY_ERROR"
+                }
+        '400':
+          description: Failure response
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    description: The description of the API request execution result
+                    type: string
+                  status_code:
+                    description: The status_code for transaction of transaction creation
+                    type: string
+                  status_reason:
+                    description: The status_reason for transaction of transaction creation
+                    type: string
+              example: |-
+                {
+                  "message": "Merchant already exists with this email : jatin+testm21@portone.io",
+                  "status_code": "4042",
+                  "status_message": "MERCHANT_ALREADY_EXISTS"
+                }
+    get:
+      tags:
+        - Refund APIs
+      summary: Fetch Refunds List
+      description: |-
+        Get the Refund details for the transaction created on PortOne. The response body contains the amount left to be refunded and the array of all refunds performed.
+      parameters:
+        - name: X-Portone-Client-Key
+          in: header
+          schema:
+            type: string
+          example: ShgshjhgHdg
+        - name: Authorization
+          in: header
+          description: The `Authorization` header is used to include the JWT for authenticating API requests; learn how to generate the token <a href="/docs/jwt-authentication" target="_blank">in this guide</a>
+          schema:
+            type: string
+          example: >-
+            Bearer
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjI2NDk3NjU5MDEsImlhdCI6MTY0OTc2NTkwMSwiaXNzIjoiQ0hBSVBBWSIsInN1YiI6Ik5QU2taWlllZkd5S3ZCeGkifQ.VHicuV4dvfp8skktlcRVJNS_WwsD_MtKB4JLBbLWOcQ
+        - name: portone_order_ref
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 27TcJzyjL1y0eNVLEUa8pA8qAsJ
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                properties:
+                  refundDetails:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/RefundContent'
+                    description: The array of Refund details
+                  amountToRefund:
+                    description: The amount remaining to refund
+                    type: number
+                    format: double
+              example: |-
+                {
+                  "amountToRefund": 60000,
+                  "refundDetails": [
+                      {
+                          "refund_date": "2022-06-30T06:20:41.052983Z",
+                          "refund_id": "",
+                          "psp_refund_id": "13785967",
+                          "amount": 40000,
+                          "currency": "VND",
+                          "refund_status": "SUCCESS",
+                          "refund_type": "partial",
+                          "refund_reason": "some reason",
+                      }
+                  ]
+                }
+        '401':
+          description: Failure response
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    description: The description of the API request execution result
+                    type: string
+                  status_code:
+                    description: The status_code for transaction of transaction creation
+                    type: string
+                  status_reason:
+                    description: The status_reason for transaction of transaction creation
+                    type: string
+              example: |-
+                {
+                  "message": "key is a required field",
+                  "status_code": "4010",
+                  "status_reason": "INVALID_UNAUTHORISED_TRANSACTION_IAMPORTKEY_ERROR"
+                }
+        '400':
+          description: Failure response
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    description: The description of the API request execution result
+                    type: string
+                  status_code:
+                    description: The status_code for transaction of transaction creation
+                    type: string
+                  status_reason:
+                    description: The status_reason for transaction of transaction creation
+                    type: string
+              example: |-
+                {
+                  "message": "Merchant already exists with this email : jatin+testm21@portone.io",
+                  "status_code": "4042",
+                  "status_message": "MERCHANT_ALREADY_EXISTS"
+                }
+
+components:
+  schemas:
+    RefundContent:
+      title: RefundContent
+      type: object
+      description: The object containing the refund data of the transaction.
+      properties:
+        refund_date:
+          type: string
+          description: The date of the refund.
+        refund_id:
+          type: string
+          description: The unique reference of the refund request created by PortOne.
+        psp_refund_id:
+          type: string
+          description: The unique reference of the refund request created by PSP.
+        amount:
+          type: number
+          format: double
+          description: The amount of refund.
+        currency:
+          type: string
+          description: The currency of the refund/ transaction.
+        refund_status:
+          type: string
+          description: The status of the refund. Refer PortOne docs for additional details.
+        refund_type:
+          type: string
+          description: The type of the refund. Either partial/full. Refer PortOne docs for additional details.
+        refund_reason:
+          type: string
+          description:  The reason of the refund request.

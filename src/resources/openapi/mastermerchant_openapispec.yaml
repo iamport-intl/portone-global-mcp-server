@@ -1,0 +1,1613 @@
+openapi: 3.0.0
+info:
+  title: Master Merchant APIs
+  version: 1.0.0
+servers:
+  - url: https://api.portone.cloud
+paths:
+  /api/master-merchant/{mkey}/add-merchant:
+    post:
+      tags:
+        - MasterMerchant APIs
+      summary: Add Sub-merchant
+      description: |-
+        Add or Invite the new sub-merchant. The sub merchant will asked to register if Login Flow is enabled for sub-merchant.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                email_address:
+                  description: The email of sub-merchant.
+                  type: string
+                name:
+                  description: The name of sub-merchant.
+                  type: string
+                country:
+                  description: The country code of sub-merchant.
+                  type: string
+                is_login_allowed:
+                  description: The boolean flag indicating whether is login allowed for sub-merchant.
+                  type: boolean
+                is_invite_merchant:
+                  description: The boolean flag indicating whether to send invitation to the merchant.
+                  type: boolean
+                use_master_merchant_creds:
+                  description: The boolean flag indicating whether sub-merchant can use master merchant credentials..
+                  type: boolean
+                send_kyc_link_email:
+                  description: The boolean flag indicating whether to send KYC to the sub-merchant.
+                  type: boolean
+              required:
+                - email_address
+                - name
+                - country
+                - is_login_allowed
+                - is_invite_merchant
+                - use_master_merchant_creds
+                - send_kyc_link_email
+              type: object
+              example:
+                email_address: jatin+testm21@portone.io
+                name: Test Sub merchant 20
+                country: VN
+                is_login_allowed: false
+                is_invite_merchant: false
+                use_master_merchant_creds: false
+                send_kyc_link_email: false
+      parameters:
+        - name: X-Portone-Client-Key
+          in: header
+          schema:
+            type: string
+          example: ShgshjhgHdg
+        - name: Authorization
+          in: header
+          description: The `Authorization` header is used to include the JWT for authenticating API requests; learn how to generate the token <a href="/docs/jwt-authentication" target="_blank">in this guide</a>
+          schema:
+            type: string
+          example: >-
+            Bearer
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjI2NDk3NjU5MDEsImlhdCI6MTY0OTc2NTkwMSwiaXNzIjoiQ0hBSVBBWSIsInN1YiI6Ik5QU2taWlllZkd5S3ZCeGkifQ.VHicuV4dvfp8skktlcRVJNS_WwsD_MtKB4JLBbLWOcQ
+        - name: mkey
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                properties:
+                  content:
+                      $ref: '#/components/schemas/AddSubMerchantContent'
+                  message:
+                    description: The description of the API request execution result
+                    type: string
+                  status_code:
+                    description: The status_code for API request execution result
+                    type: string
+                  status_reason:
+                    description: The status_reason for API request execution result
+                    type: string
+              example: |-
+                {
+                  "content": {
+                      "kyc_link": "https://kyc.portone.cloud/mQHDebHXSokWoZuj"
+                  },
+                  "message": "Merchant added successfully!",
+                  "status_code": "2000",
+                  "status_message": "Success"
+                }
+        '401':
+          description: Failure response
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    description: The description of the API request execution result
+                    type: string
+                  status_code:
+                    description: The status_code for transaction of transaction creation
+                    type: string
+                  status_reason:
+                    description: The status_reason for transaction of transaction creation
+                    type: string
+              example: |-
+                {
+                  "message": "key is a required field",
+                  "status_code": "4010",
+                  "status_reason": "INVALID_UNAUTHORISED_TRANSACTION_IAMPORTKEY_ERROR"
+                }
+        '400':
+          description: Failure response
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    description: The description of the API request execution result
+                    type: string
+                  status_code:
+                    description: The status_code for transaction of transaction creation
+                    type: string
+                  status_reason:
+                    description: The status_reason for transaction of transaction creation
+                    type: string
+              example: |-
+                {
+                  "message": "Merchant already exists with this email : jatin+testm21@portone.io",
+                  "status_code": "4042",
+                  "status_message": "MERCHANT_ALREADY_EXISTS"
+                }
+  /api/master-merchant/{mkey}/merchants-invite:
+    get:
+      tags:
+        - MasterMerchant APIs
+      summary: Fetch Invited Sub-merchants
+      parameters:
+        - name: Authorization
+          in: header
+          description: The `Authorization` header is used to include the JWT for authenticating API requests; learn how to generate the token <a href="/docs/jwt-authentication" target="_blank">in this guide</a>
+          schema:
+            type: string
+          example: >-
+            Bearer
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjI2NDk3NjU5MDEsImlhdCI6MTY0OTc2NTkwMSwiaXNzIjoiQ0hBSVBBWSIsInN1YiI6Ik5QU2taWlllZkd5S3ZCeGkifQ.VHicuV4dvfp8skktlcRVJNS_WwsD_MtKB4JLBbLWOcQ
+        - name: X-Portone-Client-Key
+          in: header
+          schema:
+            type: string
+          example: ShgshjhgHdg
+        - name: mkey
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                properties:
+                  content:
+                    type: array
+                    description: The array of objects containing the list of invited sub-merchant & their details.
+                    items:
+                      $ref: '#/components/schemas/FetchInvitedSubMerchantContent'
+                  message:
+                    description: The description of the API request execution result
+                    type: string
+                  status_code:
+                    description: The status_code for API request execution result
+                    type: string
+                  status_reason:
+                    description: The status_reason for API request execution result
+                    type: string
+              example: |-
+                {
+                  "content": [
+                    {
+                      "email_address": "jatin+submerchant10@portone.io",
+                      "status": "INVITED",
+                      "created_at": "2022-02-24T06:29:38.013517Z"
+                      "invite_link": "https://admin.portone.cloud/register?countryCode=VN&crossBorderEnabled=false&emailId=jatin%2Bsm14%40portone.io&isInviteMerchant=true&isLoginAllowed=true&masterMerchantKey=ccoeZtVDygXlhOMg&merchantName=test+sm&sendKycLinkEmail=false&useMasterMerchantCreds=false",
+                      "use_master_merchant_creds": false,
+                      "is_login_allowed": true,
+                      "is_invite_merchant": true,
+                      "send_kyc_link_email": false,
+                      "country": "VN",
+                      "name": "test sm"
+                    }
+                  ],
+                  "message": "Invited Merchants fetched successfully!",
+                  "status_code": "2000",
+                  "status_message": "Success"
+                }
+        '401':
+          description: Failure response
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    description: The description of the API request execution result
+                    type: string
+                  status_code:
+                    description: The status_code for transaction of transaction creation
+                    type: string
+                  status_reason:
+                    description: The status_reason for transaction of transaction creation
+                    type: string
+              example: |-
+                {
+                  "message": "key is a required field",
+                  "status_code": "4010",
+                  "status_reason": "INVALID_UNAUTHORISED_TRANSACTION_IAMPORTKEY_ERROR"
+                }
+        '400':
+          description: Failure response
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    description: The description of the API request execution result
+                    type: string
+                  status_code:
+                    description: The status_code for transaction of transaction creation
+                    type: string
+                  status_reason:
+                    description: The status_reason for transaction of transaction creation
+                    type: string
+              example: |-
+                {
+                  "message": "Merchant not found",
+                  "status_code": "4042",
+                  "status_message": "MERCHANT_NOT_FOUND"
+                }
+  /api/master-merchant/{mkey}/merchants:
+    get:
+      tags:
+        - MasterMerchant APIs
+      summary: Fetch All Sub-merchants
+      parameters:
+        - name: X-Portone-Client-Key
+          in: header
+          schema:
+            type: string
+          example: ShgshjhgHdg
+        - name: Authorization
+          in: header
+          description: The `Authorization` header is used to include the JWT for authenticating API requests; learn how to generate the token <a href="/docs/jwt-authentication" target="_blank">in this guide</a>
+          schema:
+            type: string
+          example: >-
+            Bearer
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjI2NDk3NjU5MDEsImlhdCI6MTY0OTc2NTkwMSwiaXNzIjoiQ0hBSVBBWSIsInN1YiI6Ik5QU2taWlllZkd5S3ZCeGkifQ.VHicuV4dvfp8skktlcRVJNS_WwsD_MtKB4JLBbLWOcQ
+        - name: mkey
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: environment
+          in: query
+          schema:
+            type: string
+          example: live
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                properties:
+                  content:
+                    type: array
+                    description: The array of objects containing the list of sub-merchant & their details.
+                    items:
+                      $ref: '#/components/schemas/FetchAllSubMerchantContent'
+                  message:
+                    description: The description of the API request execution result
+                    type: string
+                  status_code:
+                    description: The status_code for API request execution result
+                    type: string
+                  status_reason:
+                    description: The status_reason for API request execution result
+                    type: string
+              example: |-
+                {
+                  "content": [
+                      {
+                          "uuid": "a64dcaf5-87b4-4549-b810-f5c1f4332eef",
+                          "name": "Harry K Irving",
+                          "email_address": "prashant15@sub.com",
+                          "merchant_status": "ACTIVE",
+                          "key": "TVgdcMycdFpGZIlp",
+                          "master_merchant_access": true,
+                          "use_master_merchant_creds": true,
+                          "is_login_allowed": false,
+                          "is_invite_merchant": false,
+                          "kyc_link": "https://kyc.portone.cloud/TVgdcMycdFpGZIlp?environment=sandbox",
+                          "kyc_status": "PENDING",
+                          "send_kyc_link_email": false
+                      }
+                  ],
+                  "message": "Merchants fetched successfully!",
+                  "status_code": "2000",
+                  "status_message": "Success"
+                }
+        '401':
+          description: Failure response
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    description: The description of the API request execution result
+                    type: string
+                  status_code:
+                    description: The status_code for transaction of transaction creation
+                    type: string
+                  status_reason:
+                    description: The status_reason for transaction of transaction creation
+                    type: string
+              example: |-
+                {
+                  "message": "key is a required field",
+                  "status_code": "4010",
+                  "status_reason": "INVALID_UNAUTHORISED_TRANSACTION_IAMPORTKEY_ERROR"
+                }
+        '400':
+          description: Failure response
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    description: The description of the API request execution result
+                    type: string
+                  status_code:
+                    description: The status_code for transaction of transaction creation
+                    type: string
+                  status_reason:
+                    description: The status_reason for transaction of transaction creation
+                    type: string
+              example: |-
+                {
+                  "message": "Merchant already exists with this email : jatin+testm21@portone.io",
+                  "status_code": "4042",
+                  "status_message": "MERCHANT_ALREADY_EXISTS"
+                }
+  /api/master-merchant/{mkey}/merchants/paginated:
+    post:
+      tags:
+        - MasterMerchant APIs
+      summary: Fetch All Sub-merchants Paginated
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                page:
+                  description: The page number of the data to be fetched.
+                  type: string
+                pagesize:
+                  description: The page size of the data to be fetched.
+                  type: string
+                to:
+                  description: The to Date to fetch the sub-merchant.
+                  type: string
+                from:
+                  description: The from Date to fetch the sub-merchant.
+                  type: string
+                filters:
+                  description: The filters to apply to the sub-merchant, check examples.
+                  type: object
+                environment:
+                  description: The environment of the transaction is either live OR sandbox
+                  type: string
+                  enum: [live, sandbox]
+              required:
+                - page
+                - pagesize
+                - to
+                - from
+                - filters
+                - environment
+              type: object
+              example:
+                page: 1
+                pagesize: 20
+                filters:
+                  merchant_status:
+                    - ACTIVE
+                from: '2006-01-02 15:04:05'
+                to: '2022-09-13 16:04:00'
+      parameters:
+        - name: X-Portone-Client-Key
+          in: header
+          schema:
+            type: string
+          example: rxXOaderDhNXvcbc
+        - name: Authorization
+          in: header
+          description: The `Authorization` header is used to include the JWT for authenticating API requests; learn how to generate the token <a href="/docs/jwt-authentication" target="_blank">in this guide</a>
+          schema:
+            type: string
+          example: >-
+            Bearer
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjI2NDk3NjU5MDEsImlhdCI6MTY0OTc2NTkwMSwiaXNzIjoiQ0hBSVBBWSIsInN1YiI6Ik5QU2taWlllZkd5S3ZCeGkifQ.VHicuV4dvfp8skktlcRVJNS_WwsD_MtKB4JLBbLWOcQ
+        - name: mkey
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                properties:
+                  content:
+                      $ref: '#/components/schemas/FetchAllSubMerchantContent'
+                  message:
+                    description: The description of the API request execution result
+                    type: string
+                  status_code:
+                    description: The status_code for API request execution result
+                    type: string
+                  status_reason:
+                    description: The status_reason for API request execution result
+                    type: string
+              example: |-
+                {
+                  "content": [
+                      {
+                          "uuid": "addb0018-60ff-4971-a65d-ffbe4a59bbfc",
+                          "name": "Test Company",
+                          "email_address": "testcoolmate2@gmail.com",
+                          "merchant_status": "ACTIVE",
+                          "key": "lzrYFPfyMLROallZ",
+                          "master_merchant_access": true,
+                          "use_master_merchant_creds": false,
+                          "is_login_allowed": true,
+                          "is_invite_merchant": true,
+                          "kyc_link": "https://kyc.portone.cloud/lzrYFPfyMLROallZ",
+                          "kyc_status": "SUBMITTED",
+                          "send_kyc_link_email": false
+                      },
+                  ],
+                  "total_elements": 15,
+                  "total_pages": 1,
+                  "size": 20,
+                  "page": 1,
+                  "number_of_elements": 15
+                }
+        '401':
+          description: Failure response
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    description: The description of the API request execution result
+                    type: string
+                  status_code:
+                    description: The status_code for transaction of transaction creation
+                    type: string
+                  status_reason:
+                    description: The status_reason for transaction of transaction creation
+                    type: string
+              example: |-
+                {
+                  "message": "key is a required field",
+                  "status_code": "4010",
+                  "status_reason": "INVALID_UNAUTHORISED_TRANSACTION_IAMPORTKEY_ERROR"
+                }
+        '400':
+          description: Failure response
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    description: The description of the API request execution result
+                    type: string
+                  status_code:
+                    description: The status_code for transaction of transaction creation
+                    type: string
+                  status_reason:
+                    description: The status_reason for transaction of transaction creation
+                    type: string
+              example: |-
+                {
+                  "message": "Merchant not found",
+                  "status_code": "4042",
+                  "status_message": "MERCHANT_NOT_FOUND"
+                }
+  /api/master-merchant/{mkey}/merchants/{key}/status/{status}:
+    put:
+      tags:
+        - MasterMerchant APIs
+      summary: Update Sub-merchant Status
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example: ''
+      parameters:
+        - name: X-Portone-Client-Key
+          in: header
+          schema:
+            type: string
+          example: ShgshjhgHdg
+        - name: Authorization
+          in: header
+          description: The `Authorization` header is used to include the JWT for authenticating API requests; learn how to generate the token <a href="/docs/jwt-authentication" target="_blank">in this guide</a>
+          schema:
+            type: string
+          example: >-
+            Bearer
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjI2NDk3NjU5MDEsImlhdCI6MTY0OTc2NTkwMSwiaXNzIjoiQ0hBSVBBWSIsInN1YiI6Ik5QU2taWlllZkd5S3ZCeGkifQ.VHicuV4dvfp8skktlcRVJNS_WwsD_MtKB4JLBbLWOcQ
+        - name: mkey
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: key
+          in: path
+          schema:
+            type: string
+          required: true
+          example: MtvGCfbhgjSpkdct
+        - name: status
+          in: path
+          schema:
+            type: string
+          required: true
+          example: ACTIVE
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                properties:
+                  content:
+                      $ref: '#/components/schemas/FetchAllSubMerchantContent'
+                  message:
+                    description: The description of the API request execution result
+                    type: string
+                  status_code:
+                    description: The status_code for API request execution result
+                    type: string
+                  status_reason:
+                    description: The status_reason for API request execution result
+                    type: string
+              example: |-
+                {
+                  "content": {
+                      "name": "Harry K Irving",
+                      "email_address": "prashant15@sub.com",
+                      "merchant_status": "INACTIVE",
+                      "key": "TVgdcMycdFpGZIlp",
+                      "master_merchant_access": true,
+                      "use_master_merchant_creds": true,
+                      "is_login_allowed": false,
+                      "is_invite_merchant": false,
+                      "kyc_link": "",
+                      "kyc_status": "",
+                      "send_kyc_link_email": false
+                  },
+                  "message": "Merchant updated successfully!",
+                  "status_code": "2000",
+                  "status_message": "Success"
+                }
+        '401':
+          description: Failure response
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    description: The description of the API request execution result
+                    type: string
+                  status_code:
+                    description: The status_code for transaction of transaction creation
+                    type: string
+                  status_reason:
+                    description: The status_reason for transaction of transaction creation
+                    type: string
+              example: |-
+                {
+                  "message": "key is a required field",
+                  "status_code": "4010",
+                  "status_reason": "INVALID_UNAUTHORISED_TRANSACTION_IAMPORTKEY_ERROR"
+                }
+        '400':
+          description: Failure response
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    description: The description of the API request execution result
+                    type: string
+                  status_code:
+                    description: The status_code for transaction of transaction creation
+                    type: string
+                  status_reason:
+                    description: The status_reason for transaction of transaction creation
+                    type: string
+              example: |-
+                {
+                  "message": "Merchant not found",
+                  "status_code": "4042",
+                  "status_message": "MERCHANT_NOT_FOUND"
+                }
+  /api/master-merchant/{mkey}/merchants/payment-methods:
+    post:
+      tags:
+        - MasterMerchant APIs
+      summary: Update Payment Method Status
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                merchants_keys:
+                  description: The list of Sub-merchants PortOne keys
+                  type: array
+                payment_channel_key:
+                  description: The Payment Channel Key listed in PortOne docs
+                  type: string
+                payment_method_key:
+                  description: The Payment Method Key listed in PortOne docs
+                  type: string
+                enable:
+                  description: The boolean indicating whether to enable or disable the Payment Method
+                  type: string
+                default:
+                  description: The boolean indicating whether to mark the Payment Method as default
+                  type: string
+                action_type:
+                  description: The action_type. either UPDATE_ENABLE_STATUS or UPDATE_DEFAULT_STATUS
+                  type: string
+                method_sub_type:
+                  description: The payment method sub_type. either WALLET or INT_CARD
+                  type: string
+                environment:
+                  description: The environment of the transaction is either live OR sandbox
+                  type: string
+                  enum: [live, sandbox]
+              type: object
+              required:
+                - merchants_keys
+                - payment_channel_key
+                - payment_method_key
+                - enable
+                - default
+                - action_type
+                - method_sub_type
+                - environment
+              example:
+                merchants_keys:
+                  - MtvGCfbhgjSpkdct
+                payment_channel_key: MOMOPAY
+                payment_method_key: MOMOPAY_WALLET
+                enable: true
+                default: true
+                action_type: UPDATE_ENABLE_STATUS
+                method_sub_type: WALLET
+                environment: sandbox
+      parameters:
+        - name: X-Portone-Client-Key
+          in: header
+          schema:
+            type: string
+          example: ShgshjhgHdg
+        - name: Authorization
+          in: header
+          description: The `Authorization` header is used to include the JWT for authenticating API requests; learn how to generate the token <a href="/docs/jwt-authentication" target="_blank">in this guide</a>
+          schema:
+            type: string
+          example: >-
+            Bearer
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjI2NDk3NjU5MDEsImlhdCI6MTY0OTc2NTkwMSwiaXNzIjoiQ0hBSVBBWSIsInN1YiI6Ik5QU2taWlllZkd5S3ZCeGkifQ.VHicuV4dvfp8skktlcRVJNS_WwsD_MtKB4JLBbLWOcQ
+        - name: mkey
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    description: The description of the API request execution result
+                    type: string
+                  status_code:
+                    description: The status_code for API request execution result
+                    type: string
+                  status_reason:
+                    description: The status_reason for API request execution result
+                    type: string
+              example: |-
+                {
+                  "message": "Payment Methods updated successfully!",
+                  "status_code": "2000",
+                  "status_message": "Success"
+                }
+        '401':
+          description: Failure response
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    description: The description of the API request execution result
+                    type: string
+                  status_code:
+                    description: The status_code for transaction of transaction creation
+                    type: string
+                  status_reason:
+                    description: The status_reason for transaction of transaction creation
+                    type: string
+              example: |-
+                {
+                  "message": "key is a required field",
+                  "status_code": "4010",
+                  "status_reason": "INVALID_UNAUTHORISED_TRANSACTION_IAMPORTKEY_ERROR"
+                }
+        '400':
+          description: Failure response
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    description: The description of the API request execution result
+                    type: string
+                  status_code:
+                    description: The status_code for transaction of transaction creation
+                    type: string
+                  status_reason:
+                    description: The status_reason for transaction of transaction creation
+                    type: string
+              example: |-
+                {
+                  "message": "Merchant not found",
+                  "status_code": "4042",
+                  "status_message": "MERCHANT_NOT_FOUND"
+                }
+  /api/master-merchant/{mkey}/merchants/transactions:
+    post:
+      tags:
+        - MasterMerchant APIs
+      summary: Fetch Sub-merchants Transactions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                page:
+                  description: The page number of the data to be fetched.
+                  type: integer
+                  minimum: 1
+                pagesize:
+                  description: The page size of the data to be fetched.
+                  type: integer
+                  minimum: 1
+                from:
+                  description: The from Date to fetch the sub-merchant.
+                  type: string
+                to:
+                  description: The to Date to fetch the sub-merchant.
+                  type: string
+                merchant_keys:
+                  description: The list of Sub-merchants PortOne keys
+                  type: array
+                  items:
+                    type: string
+                environment:
+                  description: The environment of the transaction is either live OR sandbox
+                  type: string
+                  enum: [live, sandbox]
+              type: object
+              required:
+                - page
+                - pagesize
+                - to
+                - from
+                - merchant_keys
+                - environment
+              example:
+                page: 1
+                pagesize: 10
+                from: '2006-01-02 15:04:05'
+                to: '2026-09-13 16:04:00'
+                merchant_keys: []
+                environment: sandbox
+      parameters:
+        - name: X-Portone-Client-Key
+          in: header
+          schema:
+            type: string
+          example: ShgshjhgHdg
+        - name: Authorization
+          in: header
+          description: The `Authorization` header is used to include the JWT for authenticating API requests; learn how to generate the token <a href="/docs/jwt-authentication" target="_blank">in this guide</a>
+          schema:
+            type: string
+          example: >-
+            Bearer
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjI2NDk3NjU5MDEsImlhdCI6MTY0OTc2NTkwMSwiaXNzIjoiQ0hBSVBBWSIsInN1YiI6Ik5QU2taWlllZkd5S3ZCeGkifQ.VHicuV4dvfp8skktlcRVJNS_WwsD_MtKB4JLBbLWOcQ
+        - name: mkey
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                properties:
+                  content:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SubMerchantTransactionsContent'
+                  total_elements:
+                    description: The number of total_elements in the response.
+                    type: number
+                  total_pages:
+                    description: The number of total_pages in the response.
+                    type: number
+                  size:
+                    description: The size of the current page.
+                    type: number
+                  page:
+                    description: The current page number.
+                    type: number
+                  number_of_elements:
+                    description: The number of elements in the current page.
+                    type: number
+              example: |-
+                {
+                  "content": [
+                    {
+                      "currency": "VND",
+                      "amount": 2365000,
+                      "order_ref": "1s0xW6R4rLpDM5VBfn1341GzMro",
+                      "channel_order_ref": "",
+                      "merchant_order_ref": "MERCHANT1620023335327",
+                      "country_code": "VN",
+                      "status": "Initiated",
+                      "channel_key": "NINEPAY",
+                      "method_name": "WALLET",
+                      "channel_logo": "https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/9pay.png",
+                      "method_sub_type": "",
+                      "buyer_name": "Jatin",
+                      "buyer_email": "markweins@gmail.com",
+                      "buyer_phone": "9876567890",
+                      "buyer_address1": "Test",
+                      "buyer_address2": "address_2",
+                      "buyer_city": "Bangalore",
+                      "buyer_country": "VN",
+                      "signature_hash": "",
+                      "status_code": "",
+                      "status_reason": "",
+                      "status_channel_reason": "",
+                      "date": "2021-05-03T06:28:56.329568Z",
+                      "is_refund_allowed": true,
+                      "is_multi_refund_allowed": true,
+                      "refund_completed": false,
+                      "user_agent": "",
+                      "ip_address": "",
+                      "description": "",
+                      "link_order_ref": "",
+                      "payment_link_ref": "",
+                      "source": "api",
+                      "payment_method_used": "",
+                      "merchant_name": "Test Company",
+                      "merchant_key": "lzrYFPfyMLROallZ",
+                      "merchant_email_address": "testcoolmate2@gmail.com",
+                      "recon_status": "",
+                      "channel_name": "NINEPAY",
+                      "direct_bank_transfer_details": {
+                        "customer_name": "",
+                        "payment_slip": "",
+                        "transaction_time": "0001-01-01T00:00:00Z",
+                        "amount_paid": 0
+                      }
+                    }
+                  ],
+                  "total_elements": 1063,
+                  "total_pages": 107,
+                  "size": 10,
+                  "page": 1,
+                  "number_of_elements": 10
+                }
+        '401':
+          description: Failure response
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    description: The description of the API request execution result
+                    type: string
+                  status_code:
+                    description: The status_code for transaction of transaction creation
+                    type: string
+                  status_reason:
+                    description: The status_reason for transaction of transaction creation
+                    type: string
+              example: |-
+                {
+                  "message": "key is a required field",
+                  "status_code": "4010",
+                  "status_reason": "INVALID_UNAUTHORISED_TRANSACTION_IAMPORTKEY_ERROR"
+                }
+        '400':
+          description: Failure response
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    description: The description of the API request execution result
+                    type: string
+                  status_code:
+                    description: The status_code for transaction of transaction creation
+                    type: string
+                  status_reason:
+                    description: The status_reason for transaction of transaction creation
+                    type: string
+              example: |-
+                {
+                  "message": "Sub Merchant not found",
+                  "status_code": "4042",
+                  "status_message": "MERCHANT_NOT_FOUND"
+                }
+  /api/master-merchant/{mkey}/merchants/export-transactions:
+    post:
+      tags:
+        - MasterMerchant APIs
+      summary: Export Sub-merchants Transactions
+      description: Export Sub-merchants Transactions as a CSV/XLS file
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                page:
+                  description: The page number of the data to be fetched.
+                  type: integer
+                  minimum: 1
+                pagesize:
+                  description: The page size of the data to be fetched.
+                  type: integer
+                  minimum: 1
+                from:
+                  description: The from Date to fetch the sub-merchant.
+                  type: string
+                to:
+                  description: The to Date to fetch the sub-merchant.
+                  type: string
+                merchant_keys:
+                  description: The list of Sub-merchants PortOne keys
+                  type: array
+                  items:
+                    type: string
+                environment:
+                  description: The environment of the transaction is either live OR sandbox
+                  type: string
+                  enum: [live, sandbox]
+              type: object
+              required:
+                - page
+                - pagesize
+                - to
+                - from
+                - merchant_keys
+                - environment
+              example:
+                page: 1
+                pagesize: 10
+                from: '2006-01-02 15:04:05'
+                to: '2026-09-13 16:04:00'
+                merchant_keys: []
+                environment: sandbox
+      parameters:
+        - name: X-Portone-Client-Key
+          in: header
+          schema:
+            type: string
+          example: ShgshjhgHdg
+        - name: Authorization
+          in: header
+          description: The `Authorization` header is used to include the JWT for authenticating API requests; learn how to generate the token <a href="/docs/jwt-authentication" target="_blank">in this guide</a>
+          schema:
+            type: string
+          example: >-
+            Bearer
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjI2NDk3NjU5MDEsImlhdCI6MTY0OTc2NTkwMSwiaXNzIjoiQ0hBSVBBWSIsInN1YiI6Ik5QU2taWlllZkd5S3ZCeGkifQ.VHicuV4dvfp8skktlcRVJNS_WwsD_MtKB4JLBbLWOcQ
+        - name: mkey
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                properties:
+                  content:
+                      $ref: '#/components/schemas/AddSubMerchantContent'
+                  message:
+                    description: The description of the API request execution result
+                    type: string
+                  status_code:
+                    description: The status_code for API request execution result
+                    type: string
+                  status_reason:
+                    description: The status_reason for API request execution result
+                    type: string
+              example: |-
+                {
+                  Excel File Stream to download.
+                }
+        '401':
+          description: Failure response
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    description: The description of the API request execution result
+                    type: string
+                  status_code:
+                    description: The status_code for transaction of transaction creation
+                    type: string
+                  status_reason:
+                    description: The status_reason for transaction of transaction creation
+                    type: string
+              example: |-
+                {
+                  "message": "key is a required field",
+                  "status_code": "4010",
+                  "status_reason": "INVALID_UNAUTHORISED_TRANSACTION_IAMPORTKEY_ERROR"
+                }
+        '400':
+          description: Failure response
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    description: The description of the API request execution result
+                    type: string
+                  status_code:
+                    description: The status_code for transaction of transaction creation
+                    type: string
+                  status_reason:
+                    description: The status_reason for transaction of transaction creation
+                    type: string
+              example: |-
+                {
+                  "message": "Sub Merchant not found",
+                  "status_code": "4042",
+                  "status_message": "MERCHANT_NOT_FOUND"
+                }
+  /api/master-merchant/{mkey}/merchants/payment-links:
+    post:
+      tags:
+        - MasterMerchant APIs
+      summary: Fetch All Payment Links Paginated
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                page:
+                  description: The page number of the data to be fetched.
+                  type: integer
+                  minimum: 1
+                pagesize:
+                  description: The page size of the data to be fetched.
+                  type: integer
+                  minimum: 1
+                from:
+                  description: The from Date to fetch the sub-merchant.
+                  type: string
+                to:
+                  description: The to Date to fetch the sub-merchant.
+                  type: string
+                merchant_keys:
+                  description: The list of Sub-merchants PortOne keys
+                  type: array
+                  items:
+                    type: string
+                filters:
+                  description: The Payment Method Key listed in PortOne docs
+                  type: object
+                environment:
+                  description: The environment of the transaction is either live OR sandbox
+                  type: string
+                  enum: [live, sandbox]
+              type: object
+              required:
+                - page
+                - pagesize
+                - to
+                - from
+                - merchant_keys
+                - filters
+                - environment
+              example:
+                page: 1
+                pagesize: 10
+                from: '2006-01-02 15:04:05'
+                to: '2026-09-13 16:04:00'
+                filters: {}
+                merchant_keys: []
+                environment: sandbox
+      parameters:
+        - name: X-Portone-Client-Key
+          in: header
+          schema:
+            type: string
+          example: ShgshjhgHdg
+        - name: Authorization
+          in: header
+          description: The `Authorization` header is used to include the JWT for authenticating API requests; learn how to generate the token <a href="/docs/jwt-authentication" target="_blank">in this guide</a>
+          schema:
+            type: string
+          example: >-
+            Bearer
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjI2NDk3NjU5MDEsImlhdCI6MTY0OTc2NTkwMSwiaXNzIjoiQ0hBSVBBWSIsInN1YiI6Ik5QU2taWlllZkd5S3ZCeGkifQ.VHicuV4dvfp8skktlcRVJNS_WwsD_MtKB4JLBbLWOcQ
+        - name: mkey
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                properties:
+                  content:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SubMerchantPaymentLinkContent'
+                    description: The array of Payment Links data of sub merchants
+                  total_elements:
+                    description: The number of total_elements in the response.
+                    type: number
+                  total_pages:
+                    description: The number of total_pages in the response.
+                    type: number
+                  size:
+                    description: The size of the current page.
+                    type: number
+                  page:
+                    description: The current page number.
+                    type: number
+                  number_of_elements:
+                    description: The number of elements in the current page.
+                    type: number
+              example: |-
+                {
+                  "content": [
+                    {
+                      "link": "https://checkout.portone.cloud?ref=2AhPD4pbnHzDIhASC3EBvxJ7Gw5",
+                      "currency": "THB",
+                      "link_ref": "2AhPD4pbnHzDIhASC3EBvxJ7Gw5",
+                      "amount": 2000,
+                      "countryCode": "VN",
+                      "portone_key": "awndlbsjlkRijejj",
+                      "status": "Success",
+                      "success_url": "https://checkout.portone.cloud/success.html",
+                      "cancel_url": "https://checkout.portone.cloud/failure.html",
+                      "merchant_order_ref": "Merchant1655458719779",
+                      "is_billing_shipping_same": false,
+                      "merchant_name": "Nike",
+                      "merchant_logo": "",
+                      "merchant_back_url": "https://demo.portone.cloud/checkout.html",
+                      "merchant_shipping_charges": 0,
+                      "merchant_promo_code": "",
+                      "merchant_promo_discount": 0,
+                      "user_agent": "PostmanRuntime/7.29.0",
+                      "ip_address": "103.159.152.46",
+                      "expiry_hours": 2,
+                      "created_at": "2022-06-17T09:38:40.475387Z",
+                      "source": "api",
+                      "description": "PortOne team testing",
+                      "mobile_redirect_url": "",
+                      "show_shipping_details": true,
+                      "show_back_button": false,
+                      "default_guest_checkout": false,
+                      "is_checkout_embed": false,
+                      "notify_by_email": false,
+                      "notify_by_phone": false,
+                      "show_items": true,
+                      "merchant_key": "awndlbsjlkRijejj",
+                      "merchant_email_address": "nikhil+sb2@portone.io",
+                      "customer_name": "",
+                      "customer_email_address": "",
+                      "customer_phone_number": "",
+                      "payment_page_ref": ""
+                    }
+                  ],
+                  "total_elements": 14,
+                  "total_pages": 2,
+                  "size": 10,
+                  "page": 2,
+                  "number_of_elements": 4
+                }
+        '401':
+          description: Failure response
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    description: The description of the API request execution result
+                    type: string
+                  status_code:
+                    description: The status_code for transaction of transaction creation
+                    type: string
+                  status_reason:
+                    description: The status_reason for transaction of transaction creation
+                    type: string
+              example: |-
+                {
+                  "message": "key is a required field",
+                  "status_code": "4010",
+                  "status_reason": "INVALID_UNAUTHORISED_TRANSACTION_IAMPORTKEY_ERROR"
+                }
+        '400':
+          description: Failure response
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    description: The description of the API request execution result
+                    type: string
+                  status_code:
+                    description: The status_code for transaction of transaction creation
+                    type: string
+                  status_reason:
+                    description: The status_reason for transaction of transaction creation
+                    type: string
+              example: |-
+                {
+                  "message": "Sub Merchant not found",
+                  "status_code": "4042",
+                  "status_message": "MERCHANT_NOT_FOUND"
+                }
+
+components:
+  schemas:
+    AddSubMerchantContent:
+      title: AddSubMerchantContent
+      type: object
+      description: The object containing the add sub merchant API response data.
+      properties:
+        kyc_link:
+          type: string
+          description: The KYC page URL for the sub-merchant.
+    FetchInvitedSubMerchantContent:
+      title: FetchInvitedSubMerchantContent
+      type: object
+      description: The object containing the fetch Invited sub merchant API response data.
+      properties:
+        email_address:
+          type: string
+          description: The email_address of the invited SubMerchant.
+        status:
+          type: string
+          description: The onboarding status of the invited SubMerchant.
+        created_at:
+          type: string
+          description: The timestamp of the invited SubMerchant.
+        invite_link:
+          type: string
+          description: The invite link of the invited SubMerchant
+        use_master_merchant_creds:
+          type: string
+          description: The boolean value if sub-merchant can use master credentials
+        is_login_allowed:
+          type: string
+          description: The boolean value if sub-merchant can login.
+        is_invite_merchant:
+          type: string
+          description: The boolean value if sub-merchant was invited.
+        send_kyc_link_email:
+          type: string
+          description: The boolean vale if KYC email is sent to sub-merchant.
+        country:
+          type: string
+          description: The country of the invited SubMerchant.
+        name:
+          type: string
+          description: The brand name of the invited SubMerchant.
+    FetchAllSubMerchantContent:
+      title: FetchAllSubMerchantContent
+      type: object
+      description: The object containing the fetch Invited sub merchant API response data.
+      properties:
+        uuid:
+          type: string
+          description: The unique identifier of the invited SubMerchant.
+        name:
+          type: string
+          description: The name of the invited SubMerchant.
+        email_address:
+          type: string
+          description: The email_address of the invited SubMerchant.
+        merchant_status:
+          type: string
+          description: The status of the invited SubMerchant.
+        key:
+          type: string
+          description: The PortOne key of the invited SubMerchant.
+        master_merchant_access:
+          type: boolean
+          description: The boolean flag indicating whether master_merchant_access can access sub_merchant.
+        use_master_merchant_creds:
+          type: boolean
+          description: The boolean flag indicating whether sub-merchant can use the Master Merchant credentials.
+        is_login_allowed:
+          type: boolean
+          description: The boolean flag indicating whether sub-merchant can login to PortOne admin console.
+        is_invite_merchant:
+          type: boolean
+          description: The boolean flag indicating whether the merchant was invited.
+        kyc_link:
+          type: string
+          description: The URL of the dedicated KYC page for the sub-merchant.
+        kyc_status:
+          type: string
+          description: The KYC status of the merchant.
+        send_kyc_link_email:
+          type: boolean
+          description: The boolean flag indicating whether sub-merchant was sent email containing the KYC details.
+    SubMerchantTransactionsContent:
+      title: SubMerchantTransactionsContent
+      type: object
+      description: The object containing the transactions data of the sub-merchant.
+      properties:
+        currency:
+          type: string
+          description: The currency of the transaction.
+        amount:
+          type: number
+          format: double
+          description: The amount of the transaction.
+        order_ref:
+          type: string
+          description: The unique order reference of the transaction generated by the PortOne.
+        channel_order_ref:
+          type: string
+          description: The unique order reference of the transaction generated by PSP.
+        merchant_order_ref:
+          type: string
+          description: The unique order reference of the transaction generated by the merchant.
+        country_code:
+          type: string
+          description: The correct country code for the transaction.
+        status:
+          type: string
+          description: The status of the transaction. Refer PortOne docs for additional details.
+        channel_key:
+          type: string
+          description: The unique Channel Key of the transaction. Refer PortOne docs for additional details.
+        method_name:
+          type: string
+          description: The unique Payment Method Key of the transaction. Refer PortOne docs for additional details.
+        channel_logo:
+          type: string
+          description: The PSP logo url.
+        method_sub_type:
+          type: string
+          description: The sub type of the Payment Method. Refer PortOne docs for additional details.
+        buyer_name:
+          type: string
+          description: The buyer name of the transaction.
+        buyer_email:
+          type: string
+          description: The buyer email of the transaction.
+        buyer_phone:
+          type: string
+          description: The buyer phone number of the transaction.
+        buyer_address1:
+          type: string
+          description: The buyer address of the transaction.
+        buyer_address2:
+          type: string
+          description: The buyer address of the transaction.
+        buyer_city:
+          type: string
+          description: The buyer city of the transaction.
+        buyer_country:
+          type: string
+          description: The country code of the buyer doing the transaction.
+        signature_hash:
+          type: string
+          description: The signature hash generated for the transaction details. Refer PortOne docs for additional details.
+        status_code:
+          type: string
+          description: The status code of the transaction.
+        status_reason:
+          type: string
+          description: The status reason of the transaction.
+        status_channel_reason:
+          type: string
+          description: The status channel reason of the transaction.
+        date:
+          type: string
+          description: The date timestamp of the transaction.
+        is_refund_allowed:
+          type: boolean
+          description: The boolean flag indicating whether refund is allowed for the transaction.
+        is_multi_refund_allowed:
+          type: boolean
+          description: The boolean flag indicating whether multple partial refunds are allowed for the transaction.
+        refund_completed:
+          type: boolean
+          description: The boolean flag indicating whether refunds is completed for the transaction.
+        user_agent:
+          type: string
+          description: The user_agent of the the device from which the transaction is created.
+        ip_address:
+          type: string
+          description: The IP address of the device from which the transaction is created.
+        description:
+          type: string
+          description: The description of the transaction.
+        link_order_ref:
+          type: string
+          description: The unique order reference of link.
+        payment_link_ref:
+          type: string
+          description: The unique order reference of payment link.
+        source:
+          type: string
+          description: The source of the transaction. API or checkout.
+        payment_method_used:
+          type: string
+          description: The actual payment method used for the transaction.
+        merchant_name:
+          type: string
+          description: The name of the merchant.
+        merchant_key:
+          type: string
+          description: The unique PortOne key of the merchant.
+        merchant_email_address:
+          type: string
+          description: The email_address of the merchant.
+        recon_status:
+          type: string
+          description: The status recon for the transaction.
+        channel_name:
+          type: string
+          description: The channel_name of the PSP used in transaction.
+    SubMerchantPaymentLinkContent:
+      title: SubMerchantPaymentLinkContent
+      type: object
+      description: The object containing the Payment links data of the sub-merchant.
+      properties:
+        link:
+          type: string
+          description: The URL of the payment link.
+        currency:
+          type: string
+          description: The currency of the transaction.
+        link_ref:
+          type: string
+          description: The unique reference of the payment link.
+        amount:
+          type: number
+          format: double
+          description: The amount of the transaction.
+        countryCode:
+          type: string
+          description: The country code of the transaction.
+        portone_key:
+          type: string
+          description: The unique PortOne key for merchant.
+        status:
+          type: string
+          description: The status of the payment link.
+        success_url:
+          type: string
+          description: The success_url set to redirect_url after payment completion.
+        cancel_url:
+          type: string
+          description: The cancel_url set to redirect_url after payment completion.
+        merchant_order_ref:
+          type: string
+          description: The unique merchant order reference of the transaction.
+        is_billing_shipping_same:
+          type: boolean
+          description: The boolean flag indicating whether the billing and shipping details same of the transaction.
+        merchant_name:
+          type: string
+          description: The mname of the merchant.
+        merchant_logo:
+          type: string
+          description: The URL of the merchant logo.
+        merchant_back_url:
+          type: string
+          description: The URL directed once customer clicks the back button.
+        merchant_shipping_charges:
+          type: number
+          format: double
+          description: The amount of charges configured by the merchant.
+        merchant_promo_code:
+          type: string
+          description: The promo code applied for the payment link.
+        merchant_promo_discount:
+          type: number
+          format: double
+          description: The promo discount applied for the payment link.
+        user_agent:
+          type: string
+          description: The user_agent details of the device from which the payment link is created.
+        ip_address:
+          type: string
+          description: The IP address of the device from which the payment link is created.
+        expiry_hours:
+          type: number
+          description: The number of hours after which the payment will be expired.
+        created_at:
+          type: string
+          description: The timestamp of the time when payment link was created.
+        source:
+          type: string
+          description: The source of the payment link creation. either API or Admin console. Pls refer PortOne docs for additional details.
+        description:
+          type: string
+          description: The description of the payment link.
+        mobile_redirect_url:
+          type: string
+          description: The deep link of the merchant app to redirect after payment completion.  Refer PortOne docs for additional details.
+        show_shipping_details:
+          type: boolean
+          description: The boolean value indicating whether to show shipping details.
+        show_back_button:
+          type: boolean
+          description: The boolean value indicating whether to show the back button.
+        default_guest_checkout:
+          type: boolean
+          description: The boolean value indicating whether default checkout is allowed.
+        is_checkout_embed:
+          type: boolean
+          description: The boolean value indicating whether the checkout is embeded.
+        notify_by_email:
+          type: boolean
+          description: The boolean value indicating whether to notify the merchant by email or not.
+        notify_by_phone:
+          type: boolean
+          description: The boolean value indicating whether to notify the merchant by phone or not.
+        show_items:
+          type: boolean
+          description: The boolean flag indicating whether to show items in the checkout UI of payment link.
+        merchant_key:
+          type: string
+          description: The unique PortOne key for merchant.
+        merchant_email_address:
+          type: string
+          description: The email address of the merchant.
+        customer_name:
+          type: string
+          description: The name of the customer.
+        customer_email_address:
+          type: string
+          description: The email address of the customer.
+        customer_phone_number:
+          type: string
+          description: The phone number of the customer.
+        payment_page_ref:
+          type: string
+          description: The unique reference of the payment page.

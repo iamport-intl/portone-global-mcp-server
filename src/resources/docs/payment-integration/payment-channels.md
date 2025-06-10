@@ -1,0 +1,74 @@
+---
+url: "https://docs.portone.cloud/docs/payment-channels"
+title: "Payment Channels"
+---
+
+## Global and Crossborder   [Skip link to Global and Crossborder](https://docs.portone.cloud/docs/payment-channels\#global-and-crossborder)
+
+[![Asiapay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/asiapay.png)](https://docs.portone.cloud/docs/asiapay)[![Cybersource](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/cybersource.png)](https://docs.portone.cloud/docs/cybersource)[![GBPay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/gbpay.png)](https://docs.portone.cloud/docs/gbprimepay)[![MPGS](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/mpgs.png)](https://docs.portone.cloud/docs/mpgs)[![Others](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/others.png)](https://docs.portone.cloud/docs/others)[![Payletter](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/Payletter.png)](https://docs.portone.cloud/docs/payletter)[![Paymentwall](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/paymentwall.png)](https://docs.portone.cloud/docs/paymentwall)[![Paypal](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/paypal.png)](https://docs.portone.cloud/docs/payment-channels#)[![PortOne KR](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/portone.png)](https://docs.portone.cloud/docs/portone-korea)[![Reach](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/reach.png)](https://docs.portone.cloud/docs/reach)[![Stripe](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/stripe.png)](https://docs.portone.cloud/docs/stripe)[![Tazapay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/tazapay.png)](https://docs.portone.cloud/docs/tazapay)[![TripleA](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/tripleA.png)](https://docs.portone.cloud/docs/triple-a)
+
+## Thailand   [Skip link to Thailand](https://docs.portone.cloud/docs/payment-channels\#thailand)
+
+[![Asiapay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/asiapay.png)](https://docs.portone.cloud/docs/asiapay)[![Atome](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/atome.png)](https://docs.portone.cloud/docs/atome)[![Bangkok Bank](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/bangkokbank.png)](https://docs.portone.cloud/docs/bbl)[![Chillpay](https://chaipay-pg-icons.s3.ap-southeast-1.amazonaws.com/chillpaylogo.png)](https://docs.portone.cloud/docs/chillpay)[![GBPay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/gbpay.png)](https://docs.portone.cloud/docs/gbprimepay)[![Hero Plus](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/heroplus.png)](https://docs.portone.cloud/docs/hero-plus)[![iPay88](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/ipay88.png)](https://docs.portone.cloud/docs/ipay88)[![KBank](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/kbank.png)](https://docs.portone.cloud/docs/k-bank)[![Line Pay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/linepay2.png)](https://docs.portone.cloud/docs/linepay)[![Omise](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/omise.png)](https://docs.portone.cloud/docs/omise)[![PaySolutions](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/paysolutions.png)](https://docs.portone.cloud/docs/pay-solutions)[![Truemoney](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/truemoney_short.png)](https://docs.portone.cloud/docs/truemoney)
+
+## South Korea   [Skip link to South Korea](https://docs.portone.cloud/docs/payment-channels\#south-korea)
+
+[![PortOne KR](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/portone.png)](https://docs.portone.cloud/docs/portone-korea)[![Tosspay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/tosspay_short.png)](https://docs.portone.cloud/docs/portone-korea)[![Naverpay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/naverpay_short.png)](https://docs.portone.cloud/docs/portone-korea)[![Kakaopay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/kakaopay_short.png)](https://docs.portone.cloud/docs/portone-korea)[![Payco](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/payco_short.png)](https://docs.portone.cloud/docs/portone-korea)[![KGI Inicis](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/kginicis.png)](https://docs.portone.cloud/docs/portone-korea)[![Eximbay](https://media.licdn.com/dms/image/v2/C510BAQGdiNgSgXUVjA/company-logo_200_200/company-logo_200_200/0/1630602401769/eximbay_logo?e=2147483647&v=beta&t=ESqYQS76xXmEEfdIB3Os5NRKmDueHAljG9fIiTnEOgE)](https://docs.portone.cloud/docs/portone-korea)[![Payletter Korea](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/Payletter.png)](https://docs.portone.cloud/docs/payletter-kr)
+
+## Vietnam   [Skip link to Vietnam](https://docs.portone.cloud/docs/payment-channels\#vietnam)
+
+[![Appota](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/appota.png)](https://docs.portone.cloud/docs/appotapay)[![Asiapay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/asiapay.png)](https://docs.portone.cloud/docs/asiapay)[![Atome](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/atome.png)](https://docs.portone.cloud/docs/atome)[![Baokim](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/baokim.png)](https://docs.portone.cloud/docs/baokim)[![ePay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/epay.png)](https://docs.portone.cloud/docs/epay)[![Foxpay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/foxpay.png)](https://docs.portone.cloud/docs/foxpay)[![Kredivo](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/kredivo.png)](https://docs.portone.cloud/docs/kredivo)[![Momo Pay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/momopay.png)](https://docs.portone.cloud/docs/momo-pay)[![Napas](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/napas.png)](https://docs.portone.cloud/docs/napas)[![9Pay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/9pay.png)](https://docs.portone.cloud/docs/9pay)[![OnePay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/onepay.png)](https://docs.portone.cloud/docs/one-pay)[![ShopeePay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/shopeepay.png)](https://docs.portone.cloud/docs/shopee-pay)[![Smartpay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/smartpay.png)](https://docs.portone.cloud/docs/smart-pay)[![VNPay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/vnpay.png)](https://docs.portone.cloud/docs/vnpay)[![VTCPay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/vtcpay.png)](https://docs.portone.cloud/docs/vtc-pay)[![Zalopay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/zalopay.png)](https://docs.portone.cloud/docs/zalopay)
+
+## Philippines   [Skip link to Philippines](https://docs.portone.cloud/docs/payment-channels\#philippines)
+
+[![Asiapay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/asiapay.png)](https://docs.portone.cloud/docs/asiapay)[![Atome](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/atome.png)](https://docs.portone.cloud/docs/atome)[![Cybersource](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/cybersource.png)](https://docs.portone.cloud/docs/cybersource)[![Paynamics](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/paynamics.png)](https://docs.portone.cloud/docs/paynamics)[![Xendit](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/xendit.png)](https://docs.portone.cloud/docs/xendit)
+
+## Singapore   [Skip link to Singapore](https://docs.portone.cloud/docs/payment-channels\#singapore)
+
+[![Asiapay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/asiapay.png)](https://docs.portone.cloud/docs/asiapay)[![Atome](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/atome.png)](https://docs.portone.cloud/docs/atome)[![Omise](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/omise.png)](https://docs.portone.cloud/docs/omise)
+
+## Indonesia   [Skip link to Indonesia](https://docs.portone.cloud/docs/payment-channels\#indonesia)
+
+[![Asiapay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/asiapay.png)](https://docs.portone.cloud/docs/asiapay)[![Atome](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/atome.png)](https://docs.portone.cloud/docs/atome)[![Espay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/espay.png)](https://docs.portone.cloud/docs/espay)[![iPay88](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/ipay88.png)](https://docs.portone.cloud/docs/ipay88)[![Xendit](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/xendit.png)](https://docs.portone.cloud/docs/xendit)
+
+## Japan   [Skip link to Japan](https://docs.portone.cloud/docs/payment-channels\#japan)
+
+[![Atome](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/atome.png)](https://docs.portone.cloud/docs/atome)[![Komoju](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/komoju.png)](https://docs.portone.cloud/docs/komoju)[![PortOne KR](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/portone.png)](https://docs.portone.cloud/docs/portone-korea)
+
+## Taiwan   [Skip link to Taiwan](https://docs.portone.cloud/docs/payment-channels\#taiwan)
+
+[![Asiapay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/asiapay.png)](https://docs.portone.cloud/docs/asiapay)[![Atome](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/atome.png)](https://docs.portone.cloud/docs/atome)[![Line Pay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/linepay2.png)](https://docs.portone.cloud/docs/linepay)[![ECPay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/ecpay.png)](https://docs.portone.cloud/docs/ecpay)[![TapPay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/tappay.png)](https://docs.portone.cloud/docs/tappay)
+
+## Australia   [Skip link to Australia](https://docs.portone.cloud/docs/payment-channels\#australia)
+
+[![eWay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/eway.png)](https://docs.portone.cloud/docs/eway)[![Global Payments](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/global_payments.png)](https://docs.portone.cloud/docs/global-payments)[![Till Payments](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/tillpayment.png)](https://docs.portone.cloud/docs/till-payments)
+
+## Malaysia   [Skip link to Malaysia](https://docs.portone.cloud/docs/payment-channels\#malaysia)
+
+[![Asiapay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/asiapay.png)](https://docs.portone.cloud/docs/asiapay)[![Atome](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/atome.png)](https://docs.portone.cloud/docs/atome)[![Omise](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/omise.png)](https://docs.portone.cloud/docs/omise)
+
+## India   [Skip link to India](https://docs.portone.cloud/docs/payment-channels\#india)
+
+[![Instamojo](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/instamojo.png)](https://docs.portone.cloud/docs/instamojo)
+
+[![Razorpay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/razorpay.png)](https://docs.portone.cloud/docs/razorpay)
+
+## Hong Kong   [Skip link to Hong Kong](https://docs.portone.cloud/docs/payment-channels\#hong-kong)
+
+[![Atome](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/atome.png)](https://docs.portone.cloud/docs/atome)[![GBPay](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/gbpay.png)](https://docs.portone.cloud/docs/gbprimepay)
+
+## South Africa, Nigeria & Kenya   [Skip link to South Africa, Nigeria & Kenya](https://docs.portone.cloud/docs/payment-channels\#south-africa-nigeria--kenya)
+
+[![Klasha](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/klasha.png)](https://docs.portone.cloud/docs/klasha)
+
+Updated6 months ago
+
+* * *
+
+Did this page help you?
+
+Yes
+
+No
+
+![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

@@ -1,0 +1,1630 @@
+openapi: 3.0.0
+info:
+  title: Recon APIs
+  version: 1.0.0
+servers:
+  - url: https://api.portone.cloud
+paths:
+  /api/recon/v3/summary:
+    post:
+      tags:
+        - Recon APIs
+      summary: Get Dashboard Summary
+      description: This endpoint is used to fetch the reconciliation output summary for a pair of data sources.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                from:
+                  description: The Start date of date range for which you want to analyze the summary
+                  type: string
+                to:
+                  description: The End date of date range for which you want to analyze the summary
+                  type: string
+                data_source_a:
+                  description: The first data_source_id for which you want to analyze the summary
+                  type: string
+                data_source_b:
+                  description: The second data_source_id for which you want to analyze the summary
+                  type: string
+                record_type:
+                  description: payment for forward transactions and refund for recon of refund transactions
+                  type: string
+                  enum: [payment, refund]
+                brand_id:
+                  description: Array of brand_id, can be fetched from merchant-custom-data api
+                  type: array
+                marketplace_id:
+                  description: Array of marketplace_id, can be fetched from merchant-custom-data api
+                  type: array
+                country:
+                  description: Array of country, can be fetched from merchant-custom-data api
+                  type: array
+                currency:
+                  description: Array of currency, can be fetched from merchant-custom-data api
+                  type: array
+                environment:
+                  description: The environment of the transaction is either live OR sandbox
+                  type: string
+                  enum: [ live, sandbox ]
+              required:
+                - from
+                - to
+                - data_source_a
+                - data_source_b
+                - record_type
+                - environment
+              type: object
+              example:
+                from: '2022-05-15T18:30:00.000Z'
+                to: '2025-03-25T18:29:59.456Z'
+                data_source_a: LAZADA_ORDER
+                data_source_b: LAZADA_SETTLEMENT
+                record_type: payment
+                brand_id: ["Brand_id_1", "Brand_id_2"]
+                marketplace_id: ["mp_id_1", "mp_id_2"]
+                country: ["IN", "SG"]
+                currency: ["INR", "USD"]
+                environment: sandbox
+      parameters:
+        - name: X-Portone-Client-Key
+          in: header
+          schema:
+            type: string
+          example: zxGojUVPpnBWIz
+        - name: Authorization
+          in: header
+          description: The `Authorization` header is used to include the JWT for authenticating API requests; learn how to generate the token <a href="/docs/jwt-authentication" target="_blank">in this guide</a>
+          schema:
+            type: string
+          example: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJDSEFJUEFZIiwic3ViIjoiY2hhaXBheV9jbGllbnRfaWQiLCJpYXQiOjE1MTYyMzkwMjIsImV4cCI6MTgzMDQwMDMxNn0.CJHQTY-6v5ILILamo13BhVdgK68AIH1oPwXYH4Iyffs
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=UTF-8
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Date:
+              schema:
+                type: string
+                example: Fri, 20 Sep 2024 11:22:36 GMT
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      dataFields:
+                        type: array
+                        description: List of data fields related to transactions, settlements, and mismatches.
+                        items:
+                          type: object
+                          properties:
+                            column_category:
+                              type: string
+                              description: The category of the data (e.g., transaction, settlement, mismatch).
+                            count:
+                              type: integer
+                              description: Number of records.
+                            count_sku:
+                              type: integer
+                              description: Count of SKU records (if applicable).
+                            data_source_id:
+                              type: string
+                              description: Identifier of the data source (e.g., LAZADA_ORDER, LAZADA_SETTLEMENT).
+                            id:
+                              type: string
+                              description: Unique ID for the data field.
+                            msm_id:
+                              type: integer
+                              description: MSM (Market Source Model) ID.
+                            name:
+                              type: string
+                              description: The display name of the data field.
+                            record_type:
+                              type: string
+                              description: Type of record (e.g., payment).
+                            sliceSettings:
+                              type: object
+                              description: Visual settings for chart slices.
+                              properties:
+                                fill:
+                                  type: string
+                                  description: Fill color of the slice.
+                                stroke:
+                                  type: string
+                                  description: Stroke color of the slice.
+                            status:
+                              type: string
+                              description: Reconciliation status (e.g., reconciled, unreconciled).
+                            value:
+                              type: number
+                              description: The value associated with the data field.
+                            value_source_b:
+                              type: number
+                              description: Secondary value source (if applicable).
+                            sub_text_1:
+                              type: string
+                              description: Additional text related to the field.
+                            sub_text_2:
+                              type: string
+                              description: Additional secondary text.
+                            amount_value:
+                              type: number
+                              description: Value related to amount (if applicable).
+                      dataNodes:
+                        type: array
+                        description: Connection between various data fields.
+                        items:
+                          type: object
+                          properties:
+                            from:
+                              type: string
+                              description: Source data field ID.
+                            to:
+                              type: string
+                              description: Target data field ID.
+                            value:
+                              type: number
+                              description: Value transferred from the source to the target.
+                            weightedValue:
+                              type: number
+                              description: Weighted value representing the importance of the transfer.
+                      unConnectedNodes:
+                        type: array
+                        description: Nodes that are not connected to others.
+                        items:
+                          type: string
+                          description: IDs of unconnected nodes.
+                  message:
+                    type: string
+                    description: Description of the API request execution result.
+                  status_code:
+                    type: string
+                    description: Status code of the API response.
+                  status_reason:
+                    type: string
+                    description: Status reason of the API response.
+              example:
+                data:
+                  dataFields:
+                    - column_category: transaction
+                      count: 2043
+                      count_sku: 2810
+                      data_source_id: LAZADA_ORDER
+                      id: sale_transactions
+                      msm_id: 27
+                      name: Transactions
+                      record_type: payment
+                      sliceSettings:
+                        fill: '#2455B2'
+                        stroke: '#2455B2'
+                      value: 979330
+                    - column_category: settlement
+                      count: 1754
+                      count_sku: 2170
+                      data_source_id: LAZADA_SETTLEMENT
+                      id: sale_settlements
+                      msm_id: 27
+                      name: Settlements
+                      record_type: payment
+                      sliceSettings:
+                        fill: '#2196DF'
+                        stroke: '#2196DF'
+                      value: 732003
+                    - column_category: transaction
+                      count: 1123
+                      data_source_id: LAZADA_ORDER
+                      id: unreconciled_sale_transactions
+                      msm_id: 27
+                      name: Missing in Settlements
+                      record_type: payment
+                      sliceSettings:
+                        fill: '#2455B2'
+                        stroke: '#2455B2'
+                      status: unreconciled
+                      value: 507401
+                    - column_category: transaction
+                      count: 1057
+                      count_sku: 1720
+                      data_source_id: LAZADA_ORDER
+                      id: reconciled_sale_settlements
+                      msm_id: 27
+                      name: Matched Orders
+                      record_type: payment
+                      sliceSettings:
+                        fill: '#1A7C8B'
+                        stroke: '#1A7C8B'
+                      status: SankeyReconOrders
+                      sub_text_1: Transactions Value
+                      sub_text_2: Settlements Value
+                      value: 589774
+                      value_source_b: 463550.35
+                    - column_category: settlement
+                      count: 697
+                      data_source_id: LAZADA_SETTLEMENT
+                      id: unreconciled_sale_settlements
+                      msm_id: 27
+                      name: Missing in Transactions
+                      record_type: payment
+                      sliceSettings:
+                        fill: '#2196DF'
+                        stroke: '#2196DF'
+                      status: unreconciled
+                      value: 268453
+                    - column_category: transaction
+                      count_sku: 1000
+                      data_source_id: LAZADA_ORDER
+                      id: matched_sku
+                      msm_id: 27
+                      name: Matched SKUs
+                      record_type: payment
+                      sliceSettings:
+                        fill: '#1A7C8B'
+                        stroke: '#1A7C8B'
+                      status: reconciled
+                      value: 353123
+                    - column_category: transaction
+                      count_sku: 720
+                      data_source_id: LAZADA_ORDER
+                      id: unmatched_sku
+                      msm_id: 27
+                      name: UnMatched SKUs
+                      record_type: payment
+                      sliceSettings:
+                        fill: '#DA4D66'
+                        stroke: '#DA4D66'
+                      status: SankeyUnmatchedSku
+                      value: 236650
+                    - amount_value: 0
+                      column_category: mismatch
+                      count_sku: 0
+                      data_source_id: LAZADA_ORDER
+                      id: mismatch_no
+                      msm_id: 27
+                      name: No Mismatch
+                      record_type: payment
+                      sliceSettings:
+                        fill: '#39506750'
+                        stroke: '#39506750'
+                      status: reconciled
+                      sub_text: Transactions Value
+                      value: 0
+                    - amount_value: 351252
+                      column_category: mismatch
+                      count_sku: 999
+                      data_source_id: LAZADA_ORDER
+                      id: mismatch_fee
+                      msm_id: 27
+                      name: Fee Mismatch
+                      record_type: payment
+                      sliceSettings:
+                        fill: '#DA4D66'
+                        stroke: '#DA4D66'
+                      status: reconciled
+                      sub_text: Transactions Value
+                      value: 28630
+                    - amount_value: 0
+                      column_category: mismatch
+                      count_sku: 0
+                      data_source_id: LAZADA_ORDER
+                      id: mismatch_tax
+                      msm_id: 27
+                      name: Tax Mismatch
+                      record_type: payment
+                      sliceSettings:
+                        fill: '#39506750'
+                        stroke: '#39506750'
+                      status: reconciled
+                      sub_text: Transactions Value
+                      value: 0
+                    - amount_value: 8805
+                      column_category: mismatch
+                      count_sku: 2
+                      data_source_id: LAZADA_ORDER
+                      id: mismatch_amount
+                      msm_id: 27
+                      name: Amount Mismatch
+                      record_type: payment
+                      sliceSettings:
+                        fill: '#DA4D66'
+                        stroke: '#DA4D66'
+                      status: reconciled
+                      sub_text: Transactions Value
+                      value: 7418
+                    - amount_value: 8805
+                      column_category: mismatch
+                      count_sku: 2
+                      data_source_id: LAZADA_ORDER
+                      id: mismatch_quantity
+                      msm_id: 27
+                      name: Quantity Mismatch
+                      record_type: payment
+                      sliceSettings:
+                        fill: '#DA4D66'
+                        stroke: '#DA4D66'
+                      status: reconciled
+                      sub_text: Transactions Value
+                      value: 42
+                  dataNodes:
+                    - from: sale_transactions
+                      to: unreconciled_sale_transactions
+                      value: 1123
+                      weightedValue: 3.7391091532060696
+                    - from: sale_transactions
+                      to: reconciled_sale_settlements
+                      value: 1057
+                      weightedValue: 3.648653940283896
+                    - from: sale_settlements
+                      to: reconciled_sale_settlements
+                      value: 1057
+                      weightedValue: 3.648653940283896
+                    - from: sale_settlements
+                      to: unreconciled_sale_settlements
+                      value: 697
+                      weightedValue: 3.3126567844925883
+                    - from: reconciled_sale_settlements
+                      to: matched_sku
+                      value: 1000
+                      weightedValue: 6.734883720930233
+                    - from: reconciled_sale_settlements
+                      to: unmatched_sku
+                      value: 720
+                      weightedValue: 3.372093023255814
+                    - from: matched_sku
+                      to: mismatch_no
+                      value: 0
+                      weightedValue: 2.8
+                    - from: matched_sku
+                      to: mismatch_fee
+                      value: 999
+                      weightedValue: 3.9988
+                    - from: matched_sku
+                      to: mismatch_tax
+                      value: 0
+                      weightedValue: 2.8
+                    - from: matched_sku
+                      to: mismatch_amount
+                      value: 2
+                      weightedValue: 2.8024
+                    - from: matched_sku
+                      to: mismatch_quantity
+                      value: 2
+                      weightedValue: 2.8024
+                  unConnectedNodes: []
+                message: Dashboard Summary fetched successfully!
+                status_code: '2000'
+                status_reason: SUCCESS
+        '400':
+          description: Bad Request
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=UTF-8
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Date:
+              schema:
+                type: string
+                example: Fri, 20 Sep 2024 11:55:12 GMT
+            Content-Length:
+              schema:
+                type: integer
+                example: '97'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    description: The description of the API request execution result.
+                    type: string
+                  status_code:
+                    description: Portone status code. Can be used for debugging errors.
+                    type: string
+                  status_reason:
+                    description: Portone status key. Can be used for debugging errors.
+                    type: string
+              example:
+                message: Invalid Data Source mapping
+                status_code: '4001'
+                status_reason: INVALID_REQUEST
+  /api/recon/v3/dashboard-records:
+    post:
+      tags:
+        - Recon APIs
+      summary: Get Dashboard Records
+      description: This endpoint is used to fetch the ingested records of a Data Source
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                from:
+                  description: The Start date of date range
+                  type: string
+                to:
+                  description: The End date of date range
+                  type: string
+                data_source:
+                  description: The data_source_id for which you want to fetch the records
+                  type: string
+                record_type:
+                  description: payment for forward transactions and refund for recon of refund transactions
+                  type: string
+                  enum: [ payment, refund ]
+                status:
+                  description: status of records, can be empty string
+                  type: string
+                  enum: [ reconciled, unreconciled, SankeyReconOrders, SankeyUnmatchedSku]
+                mismatches:
+                  description: to fetch reconciled transactions on basis of mismatch like Amount mismatch, Fee mismatch, Quantity mismatch, etc.
+                  type: string
+                  enum: [mismatch_no, mismatch_fee, mismatch_tax ,mismatch_amount, mismatch_quantity]
+                msm_id:
+                  description: Merchant Source Mapping ID, get it from data-sources api
+                  type: integer
+                brand_id:
+                  description: Array of brand_id, can be fetched from merchant-custom-data api
+                  type: array
+                marketplace_id:
+                  description: Array of marketplace_id, can be fetched from merchant-custom-data api
+                  type: array
+                country:
+                  description: Array of country, can be fetched from merchant-custom-data api
+                  type: array
+                currency:
+                  description: Array of currency, can be fetched from merchant-custom-data api
+                  type: array
+                page:
+                  description: The page number of the records to be fetched
+                  type: integer
+                  minimum: 1
+                page_size:
+                  description: The page size of the records to be fetched
+                  type: integer
+                  minimum: 1
+                environment:
+                  description: The environment of the transaction is either live OR sandbox
+                  type: string
+                  enum: [ live, sandbox ]
+              required:
+                - from
+                - to
+                - data_source
+                - status
+                - msm_id
+                - record_type
+                - page
+                - page_size
+                - environment
+              type: object
+              example:
+                from: '2019-12-30T18:30:00.000Z'
+                to: '2024-07-08T18:29:59.000Z'
+                data_source: LAZADA_ORDER
+                record_type: payment
+                status: reconciled
+                mismatches: ["mismatch_fee", "mismatch_quantity"]
+                msm_id: 27
+                brand_id: ["Brand_id_1", "Brand_id_2"]
+                marketplace_id: ["mp_id_1", "mp_id_2"]
+                country: ["IN", "SG"]
+                currency: ["INR", "USD"]
+                page: 1
+                page_size: 10
+                environment: sandbox
+      parameters:
+        - name: X-Portone-Client-Key
+          in: header
+          schema:
+            type: string
+          example: zxGojUVPpnBWIz
+        - name: Authorization
+          in: header
+          description: The `Authorization` header is used to include the JWT for authenticating API requests; learn how to generate the token <a href="/docs/jwt-authentication" target="_blank">in this guide</a>
+          schema:
+            type: string
+          example: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJDSEFJUEFZIiwic3ViIjoiY2hhaXBheV9jbGllbnRfaWQiLCJpYXQiOjE1MTYyMzkwMjIsImV4cCI6MTgzMDQwMDMxNn0.CJHQTY-6v5ILILamo13BhVdgK68AIH1oPwXYH4Iyffs
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=UTF-8
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Date:
+              schema:
+                type: string
+                example: Fri, 20 Sep 2024 11:24:12 GMT
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      content:
+                        type: array
+                        description: List of payment records with reconciliation status.
+                        items:
+                          type: object
+                          properties:
+                            amount:
+                              type: number
+                              description: The total amount of the transaction.
+                            amount_mismatch:
+                              type: number
+                              description: The mismatch amount, if any.
+                            created_at:
+                              type: string
+                              format: date-time
+                              description: When the record was created.
+                            currency:
+                              type: string
+                              description: Currency code (if applicable).
+                            deleted_at:
+                              type: string
+                              format: date-time
+                              nullable: true
+                              description: Timestamp of when the record was deleted (if applicable).
+                            fee_mismatch:
+                              type: number
+                              description: Fee mismatch amount, if any.
+                            marketplace_id:
+                              type: string
+                              description: The ID of the marketplace (e.g., LAZADA).
+                            metadata:
+                              type: object
+                              nullable: true
+                              description: Additional metadata (if applicable).
+                            metadata_b:
+                              type: object
+                              nullable: true
+                              description: Secondary metadata (if applicable).
+                            quantity:
+                              type: integer
+                              description: The quantity of items in the transaction.
+                            quantity_mismatch:
+                              type: number
+                              description: Quantity mismatch, if any.
+                            raw_status:
+                              type: string
+                              description: The raw status of the record (e.g., confirmed).
+                            record_created_at:
+                              type: string
+                              format: date-time
+                              description: When the record was originally created.
+                            record_ref:
+                              type: string
+                              description: Reference number for the transaction.
+                            record_type:
+                              type: string
+                              description: The type of record (e.g., payment).
+                            sku_id:
+                              type: string
+                              description: The SKU identifier for the item in the transaction.
+                            source_display_name:
+                              type: string
+                              description: The display name of the data source.
+                            source_name:
+                              type: string
+                              description: The name of the data source (e.g., LAZADA_ORDER).
+                            status:
+                              type: string
+                              description: Reconciliation status (e.g., reconciled).
+                            tags:
+                              type: array
+                              description: Tags associated with the record.
+                              items:
+                                type: string
+                            tax_mismatch:
+                              type: number
+                              description: Tax mismatch amount, if any.
+                            transaction_id:
+                              type: string
+                              description: Unique ID for the transaction.
+                            updated_at:
+                              type: string
+                              format: date-time
+                              description: When the record was last updated.
+                      numberOfElements:
+                        type: integer
+                        description: Number of elements in the current page.
+                      page:
+                        type: integer
+                        description: Current page number.
+                      size:
+                        type: integer
+                        description: Number of records per page.
+                      totalElements:
+                        type: integer
+                        description: Total number of elements across all pages.
+                      totalPages:
+                        type: integer
+                        description: Total number of pages.
+                  message:
+                    type: string
+                    description: The description of the API request execution result.
+                  status_code:
+                    type: string
+                    description: Status code of the API response.
+                  status_reason:
+                    type: string
+                    description: Status reason of the API response.
+              example:
+                data:
+                  content:
+                    - amount: 398.67
+                      amount_mismatch: 0
+                      created_at: '2024-09-20T16:52:05.079553+05:30'
+                      currency: ''
+                      deleted_at: null
+                      fee_mismatch: -33.27
+                      marketplace_id: LAZADA
+                      metadata: null
+                      metadata_b: null
+                      quantity: 1
+                      quantity_mismatch: 0
+                      raw_status: confirmed
+                      record_created_at: '2023-12-10T21:57:00+05:30'
+                      record_ref: 755919531746953#4806516033299
+                      record_type: payment
+                      sku_id: '4806516033299'
+                      source_display_name: ''
+                      source_name: LAZADA_ORDER
+                      status: reconciled
+                      tags: []
+                      tax_mismatch: 0
+                      transaction_id: '755919531746953'
+                      updated_at: '2024-09-20T16:52:05.079553+05:30'
+                    - amount: 194.77
+                      amount_mismatch: 0
+                      created_at: '2024-09-20T16:52:06.110376+05:30'
+                      currency: ''
+                      deleted_at: null
+                      fee_mismatch: -16.26
+                      marketplace_id: LAZADA
+                      metadata: null
+                      metadata_b: null
+                      quantity: 1
+                      quantity_mismatch: 0
+                      raw_status: confirmed
+                      record_created_at: '2023-12-10T21:57:00+05:30'
+                      record_ref: 750843826081325#S2-4800204002123
+                      record_type: payment
+                      sku_id: S2-4800204002123
+                      source_display_name: ''
+                      source_name: LAZADA_ORDER
+                      status: reconciled
+                      tags: []
+                      tax_mismatch: 0
+                      transaction_id: '750843826081325'
+                      updated_at: '2024-09-20T16:52:06.110376+05:30'
+                    - amount: 124.2
+                      amount_mismatch: 0
+                      created_at: '2024-09-20T16:52:05.079553+05:30'
+                      currency: ''
+                      deleted_at: null
+                      fee_mismatch: -10.24
+                      marketplace_id: LAZADA
+                      metadata: null
+                      metadata_b: null
+                      quantity: 1
+                      quantity_mismatch: 0
+                      raw_status: confirmed
+                      record_created_at: '2023-12-10T23:03:00+05:30'
+                      record_ref: 750833854233964#S2-4800204008620
+                      record_type: payment
+                      sku_id: S2-4800204008620
+                      source_display_name: ''
+                      source_name: LAZADA_ORDER
+                      status: reconciled
+                      tags: []
+                      tax_mismatch: 0
+                      transaction_id: '750833854233964'
+                      updated_at: '2024-09-20T16:52:05.079553+05:30'
+                    - amount: 183.47
+                      amount_mismatch: 0
+                      created_at: '2024-09-20T16:52:05.686764+05:30'
+                      currency: ''
+                      deleted_at: null
+                      fee_mismatch: -15.12
+                      marketplace_id: LAZADA
+                      metadata: null
+                      metadata_b: null
+                      quantity: 1
+                      quantity_mismatch: 0
+                      raw_status: confirmed
+                      record_created_at: '2023-12-10T23:03:00+05:30'
+                      record_ref: 750833854233964#C250ML
+                      record_type: payment
+                      sku_id: C250ML
+                      source_display_name: ''
+                      source_name: LAZADA_ORDER
+                      status: reconciled
+                      tags: []
+                      tax_mismatch: 0
+                      transaction_id: '750833854233964'
+                      updated_at: '2024-09-20T16:52:05.686764+05:30'
+                    - amount: 624.68
+                      amount_mismatch: 0
+                      created_at: '2024-09-20T16:52:05.079553+05:30'
+                      currency: ''
+                      deleted_at: null
+                      fee_mismatch: -51.49
+                      marketplace_id: LAZADA
+                      metadata: null
+                      metadata_b: null
+                      quantity: 1
+                      quantity_mismatch: 0
+                      raw_status: confirmed
+                      record_created_at: '2023-12-10T23:22:00+05:30'
+                      record_ref: 755917386294855#B1T1-4806516030199
+                      record_type: payment
+                      sku_id: B1T1-4806516030199
+                      source_display_name: ''
+                      source_name: LAZADA_ORDER
+                      status: reconciled
+                      tags: []
+                      tax_mismatch: 0
+                      transaction_id: '755917386294855'
+                      updated_at: '2024-09-20T16:52:05.079553+05:30'
+                    - amount: 111.5
+                      amount_mismatch: 0
+                      created_at: '2024-09-20T16:52:05.079553+05:30'
+                      currency: ''
+                      deleted_at: null
+                      fee_mismatch: -10.09
+                      marketplace_id: LAZADA
+                      metadata: null
+                      metadata_b: null
+                      quantity: 1
+                      quantity_mismatch: 0
+                      raw_status: confirmed
+                      record_created_at: '2023-12-11T01:48:00+05:30'
+                      record_ref: 750871433440024#LD60ML-S2
+                      record_type: payment
+                      sku_id: LD60ML-S2
+                      source_display_name: ''
+                      source_name: LAZADA_ORDER
+                      status: reconciled
+                      tags: []
+                      tax_mismatch: 0
+                      transaction_id: '750871433440024'
+                      updated_at: '2024-09-20T16:52:05.079553+05:30'
+                    - amount: 633.62
+                      amount_mismatch: 0
+                      created_at: '2024-09-20T16:52:05.686764+05:30'
+                      currency: ''
+                      deleted_at: null
+                      fee_mismatch: -52.23
+                      marketplace_id: LAZADA
+                      metadata: null
+                      metadata_b: null
+                      quantity: 1
+                      quantity_mismatch: 0
+                      raw_status: confirmed
+                      record_created_at: '2023-12-11T01:51:00+05:30'
+                      record_ref: 755956748792490#B1T1-4806516030199
+                      record_type: payment
+                      sku_id: B1T1-4806516030199
+                      source_display_name: ''
+                      source_name: LAZADA_ORDER
+                      status: reconciled
+                      tags: []
+                      tax_mismatch: 0
+                      transaction_id: '755956748792490'
+                      updated_at: '2024-09-20T16:52:05.686764+05:30'
+                    - amount: 404.38
+                      amount_mismatch: 0
+                      created_at: '2024-09-20T16:52:05.686764+05:30'
+                      currency: ''
+                      deleted_at: null
+                      fee_mismatch: -33.33
+                      marketplace_id: LAZADA
+                      metadata: null
+                      metadata_b: null
+                      quantity: 1
+                      quantity_mismatch: 0
+                      raw_status: confirmed
+                      record_created_at: '2023-12-11T01:51:00+05:30'
+                      record_ref: 755956748792490#4806516033299
+                      record_type: payment
+                      sku_id: '4806516033299'
+                      source_display_name: ''
+                      source_name: LAZADA_ORDER
+                      status: reconciled
+                      tags: []
+                      tax_mismatch: 0
+                      transaction_id: '755956748792490'
+                      updated_at: '2024-09-20T16:52:05.686764+05:30'
+                    - amount: 600.29
+                      amount_mismatch: 0
+                      created_at: '2024-09-20T16:52:05.079553+05:30'
+                      currency: ''
+                      deleted_at: null
+                      fee_mismatch: -49.48
+                      marketplace_id: LAZADA
+                      metadata: null
+                      metadata_b: null
+                      quantity: 2
+                      quantity_mismatch: 0
+                      raw_status: delivered
+                      record_created_at: '2023-12-11T01:59:00+05:30'
+                      record_ref: 750875822591160#4800204001812
+                      record_type: payment
+                      sku_id: '4800204001812'
+                      source_display_name: ''
+                      source_name: LAZADA_ORDER
+                      status: reconciled
+                      tags: []
+                      tax_mismatch: 0
+                      transaction_id: '750875822591160'
+                      updated_at: '2024-09-20T16:52:05.079553+05:30'
+                    - amount: 1185.05
+                      amount_mismatch: 0
+                      created_at: '2024-09-20T16:52:05.079553+05:30'
+                      currency: ''
+                      deleted_at: null
+                      fee_mismatch: -97.68
+                      marketplace_id: LAZADA
+                      metadata: null
+                      metadata_b: null
+                      quantity: 1
+                      quantity_mismatch: 0
+                      raw_status: delivered
+                      record_created_at: '2023-12-11T01:59:00+05:30'
+                      record_ref: 750875822591160#4806516031288x2
+                      record_type: payment
+                      sku_id: 4806516031288x2
+                      source_display_name: ''
+                      source_name: LAZADA_ORDER
+                      status: reconciled
+                      tags: []
+                      tax_mismatch: 0
+                      transaction_id: '750875822591160'
+                      updated_at: '2024-09-20T16:52:05.079553+05:30'
+                  numberOfElements: 10
+                  page: 1
+                  size: 10
+                  totalElements: 2000
+                  totalPages: 200
+                message: Dashboard Source Data fetched successfully!
+                status_code: '2000'
+                status_reason: SUCCESS
+        '400':
+          description: Bad Request
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=UTF-8
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Date:
+              schema:
+                type: string
+                example: Fri, 20 Sep 2024 11:23:05 GMT
+            Content-Length:
+              schema:
+                type: integer
+                example: '101'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    description: The description of the API request execution result.
+                    type: string
+                  status_code:
+                    description: Portone status code. Can be used for debugging errors.
+                    type: string
+                  status_reason:
+                    description: Portone status key. Can be used for debugging errors.
+                    type: string
+              example:
+                message: data_source is a required field
+                status_code: '4001'
+                status_reason: INVALID_REQUEST
+  /api/recon/v3/export-dashboard-records:
+    post:
+      tags:
+        - Recon APIs
+      summary: Export Dashboard Source Records
+      description: This endpoint is used to download the ingested records of a Data Source
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                from:
+                  description: The Start date of date range
+                  type: string
+                to:
+                  description: The End date of date range
+                  type: string
+                data_source:
+                  description: The data_source_id for which you want to fetch the records
+                  type: string
+                record_type:
+                  description: payment for forward transactions and refund for recon of refund transactions
+                  type: string
+                  enum: [ payment, refund ]
+                status:
+                  description: status of records, can be empty string
+                  type: string
+                  enum: [ reconciled, unreconciled, SankeyReconOrders, SankeyUnmatchedSku ]
+                mismatches:
+                  description: to fetch reconciled transactions on basis of mismatch like Amount mismatch, Fee mismatch, Quantity mismatch, etc.
+                  type: string
+                  enum: [ mismatch_no, mismatch_fee, mismatch_tax ,mismatch_amount, mismatch_quantity ]
+                msm_id:
+                  description: Merchant Source Mapping ID, get it from data-sources api
+                  type: integer
+                brand_id:
+                  description: Array of brand_id, can be fetched from merchant-custom-data api
+                  type: array
+                marketplace_id:
+                  description: Array of marketplace_id, can be fetched from merchant-custom-data api
+                  type: array
+                country:
+                  description: Array of country, can be fetched from merchant-custom-data api
+                  type: array
+                currency:
+                  description: Array of currency, can be fetched from merchant-custom-data api
+                  type: array
+                environment:
+                  description: The environment of the transaction is either live OR sandbox
+                  type: string
+                  enum: [ live, sandbox ]
+              required:
+                - from
+                - to
+                - data_source
+                - status
+                - msm_id
+                - record_type
+                - environment
+              type: object
+              example:
+                from: '2021-12-31T18:30:00.000Z'
+                to: '2024-04-09T18:29:59.743Z'
+                data_source: LAZADA_ORDER
+                record_type: payment
+                status: reconciled
+                brand_id: []
+                marketplace_id: []
+                mismatches:
+                  - no_mismatch
+                  - mismatch_quantity
+                msm_id: 27
+                environment: sandbox
+      parameters:
+        - name: X-Portone-Client-Key
+          in: header
+          schema:
+            type: string
+          example: zxGojUVPpnBWIz
+        - name: Authorization
+          description: The `Authorization` header is used to include the JWT for authenticating API requests; learn how to generate the token <a href="/docs/jwt-authentication" target="_blank">in this guide</a>
+          in: header
+          schema:
+            type: string
+          example: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJDSEFJUEFZIiwic3ViIjoiY2hhaXBheV9jbGllbnRfaWQiLCJpYXQiOjE1MTYyMzkwMjIsImV4cCI6MTgzMDQwMDMxNn0.CJHQTY-6v5ILILamo13BhVdgK68AIH1oPwXYH4Iyffs
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Disposition:
+              schema:
+                type: string
+                example: attachment; filename=source-records.xlsx
+            Content-Type:
+              schema:
+                type: string
+                example: application/octet-stream
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Date:
+              schema:
+                type: string
+                example: Fri, 20 Sep 2024 12:00:51 GMT
+            Content-Length:
+              schema:
+                type: integer
+                example: '112'
+          content:
+            text/plain:
+              schema:
+                type: string
+              examples:
+                example-0:
+                  summary: Invalid Merchant Source Mapping
+                  value: >
+                    {"message":"Data source mapping not found for
+                    Merchant","status_code":"4001","status_reason":"INVALID_REQUEST"}
+                example-1:
+                  summary: Success
+                  value: "PK\x03\x04\x14\0\b\0\b\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x0F\0\0\0xl/workbook.xml���k�0\x10���W�{olyI\x16�����\x02[\x17h�>+�9\x16�\x0F#ɍ��~؞W�2���:\x7F?w�=�����\x05}P�2��\x1C\bZᤲG\x06�\x1E��l��P��?\x1D�;��h\e\x1841��,\v�A��µh{�k�\r�a��1\v�G.C�\x18�Ί<_g�+\v\x13a�a��V\x02��\f�8A<j\x1E���Qm�iF\\�3ܟ��F8��\x0EJ�x\x19�@����y~�Ƞ������;�Q»��\x10��m�ݼ4�(�F��Zi|�L&�m�\x19�h ���E����\x1A�vg|s��s��d@��\"���\x12V�o/{Oj�#��W/\\\\\x18D�!\x10�5�t|l��\"\x06t��)\x1DX��\x1C��sx�\x0E��\x7FVV�3�\x1C�%9��㳒�\x19�����\e�c\x13\x19lr��U\x06\\UfI�Ѯ9\x12;��C\x05ãh�Cg\f�\x17 cv'\x19\x14@�VI\x06~'�\x03y̼����I�!��o.9��%�\x04�1����<`�\x1A�W���\t��\x7FH�.bH4�D�I4�l��Z�=\x19��?-�b�ՔH��\x04\0\0��PK\a\b���o�\x01\0\0�\x03\0\0PK\x03\x04\x14\0\b\0\b\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x11\0\0\0docProps/core.xml��MK\x031\x10����%��ɶP4��A�IA��x\vɴ\rn>HR7�{��V�M�i�g\x1E�$|QlW}aLƻ9i\eJ*t�k�6s�Zַd!n�\nL����\a��`���\\b*��6��\0�ڢ���\x01]���G+sj|�@��Sn\x10&���b�Zf\t{a\x1DF#9*�\x1A�a\x17�A�\x15`�\x16]N�6-�ٌѦ�\vCrAZ��\x03^EO�H�dF�����\x0E��\x16ޟ\x1E_���ƥ,�B\"�VLE��GQv�p�\x18�c��\0uU�a�.��mz��Z\x12�\x7F�����lE)\e����k�,�^�����$\x10\x1C����\t\0\0��PK\a\bE�@�\x10\x01\0\0\x1C\x02\0\0PK\x03\x04\x14\0\b\0\b\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x13\0\0\0[Content_Types].xml̕Mk�0\x10���\x15Fײ�&�����Џc\eh�\x03Ti�\x16+i��d���b{7\x14�\x04�]J/�e�>\x0F�\x06���R�\x0E@\x1C0��J�U\x05١\x0F���ϻ��\x0F�f�js�P��.�̵jE�Gcص�,k,��\x14wH�\nk��\x14���\x01s�^�7\x0E�@���\x19j��\f;{\x1F���\t�K\x10YU����U+[J\f�J�l\x0E�O(�#A\x13�a��P�u���n̑�$�\x1Fy�4\r�~\0�ࡺ�$�l�Z�.\x1Ai!����/'>Ꮋ]p���'Ȣ����\t�,��!\x02�\r�B`=�\0��\x1ECg;�F��B�_ڢ?u�!�3��n\t\v\e[��*Я�\a�*�\x05H��>\x1E-\x1C\x12,�8-r��b��.���\f��r�\x17/�1\x7F�\x11����\x10\n������=�h�ћ\v[-�hj���3z����l�\x04\0\0��PK\a\bF��@k\x01\0\0�\x06\0\0PK\x03\x04\x14\0\b\0\b\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\v\0\0\0_rels/.rels���J�0\x10\x06���)B��t�\x0F\"��^D؛H}��L��$\x13&�Ʒ\x17��Ŋ�80|ߏ�x�1�\x17��1i�oZ) Yt>�Z>�w�ky��\x1D\x1F \x18����s\x115�T����R�N\x10Mi0C�1\fH�pi�F����\b�жW�.3d��\x14g�%��\x7F)zC#��\x0E�=a.����\x18���2��\x15��[�E�\x1C!�J��ʐ\x1C�]&�@��\x03�.E�Ê�\"�6�ϳ�\bl�a󙺙���ՠ^��'�y\e����\x1F�e��t�\x01\0\0��PK\a\b��{��\0\0\0d\x02\0\0PK\x03\x04\x14\0\b\0\b\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\r\0\0\0xl/styles.xmlԙ�n�:\x12���)\b�'\x12\x1D�q\fIE�m�\x02�E�f���\x14%\x13�@Q.��y�\x03R���(r[�\x18�D��o��ገ�\x1F\fg�@TA��<x\x1Dx�\b,\x13*���������\x10�+,���o{B4\0�3QD�^�|��\x05�\x13��k�\x13a8K��H\x17�Re~�+��\x8E��_\x04���\n�\"lQ>\x05\"Ӕb�I�\x13�+\n1���$W��9Q������P\\\x16Z�\x13H4��(���<��x��n\x01����T�Z����\x12%y�4�QF��a%\x19��J(�\x14�\r��q\x0E���$\x1F�8�v�r:��S�KE\x1A����^��p�$کXT�!M�(�4o��L�t�C�;g\rj�ʝ\"q�����@��\x01\x05�\x04q��ҝB�8��IKϑz.�A,;V;\x1FAF\x1CN���L�5����O\f&'��\v9m�\e\x19�zYJ�&��GϏGX�\x03����<\x1FG���X\x1E�zD\x19yT��0��qzx\x05��o\x02䋨�M�xD�����;��h� �|,�&B?\x1D�vw\n}��LAU�_�\v��3�\x16ä�\x1EGŁ���\x04VWd��^kEw��a\v*�� S��/\x02\x18\f�\r\\N3�Nbְ[\x7F�/F%�� \x18�,:h\x16�?��Θ\x16\fF�}*d������Af�{�d\x01�W\n��K4Nb�mC�+\x12\x13������U�\x17r���\x01��(�%\x19��\x18,�\vK\f\\M��t\v\f|\b�k\x06\x17s}\f�\x0F{>6p5����&&�\x11g�+r����C-f�V-k��nf��-즃M��W`�\x0E67\":ت��/�u�\x0F��b�m\a�\\\f�t���aw\x1D\f\x06\x17�`����q����\rz��>��o\x04��\tS��k��^��\x1E{�n7���a9N��\v�Q��a\x1Co�dB*�c$�0\\\x02�a\x02\x10\\\x02�Q\0��s2WCAR���/�*\x100p\x05\\�\a.k\x03��Q\v`�\r0j\t�Z\x01����[`�\x06\x18u\al��\v�\x17�\x15ھ��\x1C�����!�\x12p\x03�\x01Hph���c\0G�WE7ó�ģ�e�Ǒ\x17�C�Jl��W�x{\x04�r����@(_�[�o͈W�\x15YmK�D����w\x15\x04\x01�jZե����a*�.\0��Б��\x05qX�\x04\a�\"\x0FB/\x0E��g\x1Cbɤ\x02zO8�<'u�8\x14����G��NQ��\n�0E��c�raŕ�6��꺫U�\x0E����P��v��P�����@�/T�;5�[\x11�)el����8̑�D�\a�\x18����\x17yB\nbq�\x0E\x16�no\f�\x14:��j��B2�X����e�|\x7F{�\f�\x04�\x17�����ϫO�o�ݭ�ÝT\tQ�?m�T�8d$�n�n�f{�Tߵ���wם�Zr\eau�~tK���^��֍\"\x0E1a�>2�=\x1D�7)\x10%\x7F��K\x12y�\a�7M�Xݬ0�C\x1C�&�A�#V�\x1Ez=\v\rL:�q�\0;��\f\x01�<g�\ai�Ѫ$��26\x10�3�\tN�nq�\x1A\t�KE\x7FJ��&�\vぃ=�c����DYC��o\x18�茾�'\x1A}n��\x18}����B�\x131��96�)G7F_������X��\e��9\x06y��\x02[P\"�Rq�z��J�4\x15�~n\a��E\x1C&��\x1A��\x15ġ�ߍC��\a\x12����Gz�ڽ�����fK�n{=������!\t-��y=\x1D����'��\x0E\0\0��PK\a\bk��\x02d\x05\0\0[\e\0\0PK\x03\x04\x14\0\b\0\b\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x18\0\0\0xl/worksheets/sheet4.xmll����0\x10\a�{�\x9A{qB\x05��mD�\x14�/�=��I,� ې<~�\x04�|�\\�������ug4�K\x1F��\x1C�Y\x06D��U��\x1C~�����Z�b���H\x19Ig�\r\x1C�\x18�+JC�HS���J�\x19}v�\x141̜�i�zYT}��t�eKj\neA�J\x19iӁ��3�M\x0E��\x11\x05�{�(نIM�_���%�8V\x1C��5nO� X�����\x16�3\x7FU\x15\e\x0E��$\x10St\x1C�9\x10��3\x03i���\"�,�\x1E���\"\x16�y�\x12ߧ����\x02\x1E�\x0FR�I�т�)�Ɂ�>\e9\x04\x10�.�����G��31�-b;��#�G�\x03b\aĎ�}D�\x13b�\x11���Wľ!�\x1D�\x1F��D�\x17b��F�\eo��Z����J�\x03)���!;��N��ѧu\x10��߇�\x1F\0\0��PK\a\ba�\r�S\x01\0\0R\x03\0\0PK\x03\x04\x14\0\b\0\b\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x18\0\0\0xl/worksheets/sheet2.xml��ˎ�0\x14\x06�}��:��\x10.�\"����\x1Ev��\x19�\x044\x18G�\x13��\x15\x10(!��\r�>~\x1F�_2��*Kr\x11�\x14����9@D�����\x11�����\r��\x17V+�ar!,�ʲ2\x11�֞\x16��4\x17213u\x12�U��J�Ě��GjNZ$Y�I�t�8!�IQ\x01gY!E�\x1CH�x���\x05�耜�{~\x15�6�5���wQ�Ԋ,\x02��\x02H�UoJ}4�wY\x04N3h�1^\e�RUvO���U�w�ټ�$�k\x04�\aD\x16M\r@����\x1D���{�\x1F�Ll\x99V5�m:�\x11x\x01�&oEql�\x1D�Yڄ�] ���\b\fpv�\x0E��f�-��'F���\x12�\x15bk�6�m\x11�!�G�X|oT�z��\e����|T�;��O��@l��\n�5b\eĶ��\x10�#v@,���:��\x0E�����\x0E\x1F�\x03�%b+�ֈm\x10�\"�Cl��\x01���w\x1D�PGІ�Q\x1Dޤ�>��\t�����>�\x0FG��#B�\b:��R�x\x15eiH�Ε����?�E�^��\x1F\"/�\"\x0E>���8�D��\rgt�A�?\x01\0\0��PK\a\b�S�`�\x01\0\0�\x05\0\0PK\x03\x04\x14\0\b\0\b\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x1A\0\0\0xl/_rels/workbook.xml.rels���J�0\x14\x05�O\x11����w�ig#�l�>@ho�0�)�Q;o/TpZ\x18J����l��89\x1C[k�\a\x05�ޥ�L\x16 �\x15�ԮN�-\x7F���1�;���Q{�J7,Zk\x1C��bl\x1E\x11�Pd%'�!�ZS�`e�ć\x1A\eY�eM�Z,v\x18�\x19�\r2ũL!��\x15�\\��b\n\x1C/�8i�\x01�_\x1A���J\x17��wK.ި��T�\x0Eد��Y_1Q�%���ܤ.u�hs\x15ak�Ӈ3+���]��i?\x05�x�!��\fT�Ơ]=�G�ç�v���&�r��q��y�q��\x0Fy�'g_\x01\0\0��PK\a\b��m�\x01\x01\0\0�\x04\0\0PK\x03\x04\x14\0\b\0\b\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x14\0\0\0xl/sharedStrings.xml���j�0\x10���)����,�%�\n�ƫ�@�>����@#��qp��%�$%MJB�����sT,G�b\x03�\\\f�̳�\x14\x10ll]X��uUO�˥�W\x10�\x18�\a*e��/�\"�\x01\x1A�b\x0FaD�\x16\x13\x1A�,���>�i�\x03`�j6��\x15\x1A\x17��q\b\\�|.�\x10��\0���.��b�Ȃzc��}\x02��\x01��񼀍�:�\f�\x18D3 ��-\x14�B�\f�X�&\x17�x0\x1F�5�9��n�gG�\x01f\x0F\b�����.�xt��m'Jq\x15V\x03��|k�2lD�\"�!�\x19ˍُ��y��wz�{2\b�\v��?I`cj)\e=�g�ն�A\x1Fګ���t����t�KW�jf\x17��+E\x11��\f\0\0��PK\a\b\x16��\x15,\x01\0\0l\x03\0\0PK\x03\x04\x14\0\b\0\b\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x10\0\0\0docProps/app.xml��?K\x041\x10\x05��O�����B���\x10��Z��K2{7�̄�xD?���Y[>\x1E�x�\x1Fz��\x19������\r�Q\x12�qv�����\x1D\x95\x7FiR�\x19�\x0E�d�ٝ��\x1E@�\t˪�T�^�&�����#ȶQ�\a��\x05��f�n\x01�!'L��\v�\x1Fq\x7F���I��>}[>*�\v~\x11[�B\x05���\x12�}���j$\x1C�ex�\x113}��������\x15\0\0��PK\a\b�8 \t�\0\0\0 \x01\0\0PK\x03\x04\x14\0\b\0\b\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x18\0\0\0xl/worksheets/sheet3.xmll�K��0\x10\a�{?�5�ℊ�B�\x11�R��A��lb\x12\v?�mH>��\tDYi.���\x7F�Dqت3�ܤ\x0F�Y\x0E�,\x03\"m�*ek\x0E����\x1F`%ް��sh���3�\x06\x0EM��%��l�)��]��>9o�\x18f��4\\�,���h:ϲ��\x14ʂ`�2Ҧ\x03��'\x0E�\x1C\x04�#\n���W�\r�������9�8T\x1C��5nO� X�����\x1A�3O��\r��\x12�):\x0E�\x1C�Q陁���|�F�N\x0F���m\x11\v��k���M��n\x01��{��$�h��\x14Z�@B��\x1C\x02\bv\x13\vFoi�=���\x06�-b�\x10�!�\x19�=b\aľ �\x15�o�}G�\ab?\x11���o�� �\x17��k�ލ7ex�F�Zn�ց��j�\x1D�qC��~���:\bF��C�\x04\0\0��PK\a\bR\e�+T\x01\0\0R\x03\0\0PK\x03\x04\x14\0\b\0\b\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x18\0\0\0xl/worksheets/sheet5.xml��ێ�0\x10���\x14��7�\x04rX\x19����nχ����\rh1�l'��+Cb�0�rc9���/h,�냬�^hS�:�p\x12\0\x11u���$�k��v\t��\rk�~1�\x10�\x1CdU�\x04\nk�W���\x1025\x13�\x15�AV�J�Ԛ��\ej�Z�y[$+:\r�9�iY\x03gy)E�D��\x04nB��z�Y[�\x14����\v\x7F�zq?��\x04\x02W��{�Y��n%��X%���-\x12�z'�����\x14�,�'\x03i��Y�:f��֓�>�)gZ5D��¶�c�GQn\x1Ci;s���M\bĴY��\x01��|��޵=&nO�\x1E�C�=��!�\x01a�\x11���'�}@�G�}B�g�}A�W�}C�w��@�O��_3�U�G9�F9��(gm��7��`�]\"�%V>�J\x18]$�F�0\x18\x18��1\fqe|�2\x1E+�\x03e<V�p��\"�|��\x06��X\x19��ũ���X���>�<\x1FZ���|(\f|*\f�\x18�=\eR荸\x13UeH�v���\a�j�^Q��{�\x19��/�\x17\0\0��PK\a\b_{0`�\x01\0\0�\x05\0\0PK\x03\x04\x14\0\b\0\b\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x13\0\0\0xl/theme/theme1.xml�YOo�F\x16�� �!���e�\fl�Jvc'A�d��\x139\"'\x1E�\x103#ۺ-��^\x16(�\x16�\x14譇�h�\x06h�K?��\x04m�!\n��4�pl'v���u�<�~3����{\x1Azx�$��\x11\x16�p\x16��\r\x0F9�E<&,\t�Ã�?7���\x1FC��\f;'\x19e2@�R����(�\x19�\e<��$�3.2P�\x06\x17�\e\v8&,ɨ�����\x01a�bo�\x15��2|>��\b�y4�0S�$\x02SP�3��\\\"�A�\x03t�\x04:\a�{(��ܡ�`�p\x18Q�\x1F���h\x14\x0E��V8�\v9��9\x02\x1A�c�b~|�O\x14r(H5�\"@^��¡[Aá[\x12�jdk�I�g0KR|�\x0E�R$�\x15������\x12Y��E��\"u�N\x7F���3�%\n�\b�R�\x0E��\a�c߄��՗wV\x18�ǝV\x13e�J�F��O\x13�sF��(���,�5J���\x13�~{�m��g�^������~\x13�\x17\x0ESJ�a����Ψ��\x127��v\x03c�w'���XC���+&`�y'f���\tg*\x1C\x16ۛ9j��\x19D8@#�d*��K�T!'\a�%\x0E���&^�k��n���LI\x0F�\x18�)\n;�p\x18ɚ1��(GF��*@�΁!\r��իӧ/O��|�����\x1F�\"J\a\v�\x06�6�D���?�����O߾}���#uΛ\x1F���_/ZF\x19\x12�z����_����[([\x02�:�dX:w��g�l\v�x\x7F�A\n�`A�3��wTj��.�ڰ��\f�#AXl\x03ߚ?1��b��\x05|'�\f�\x1E�t�\v��w�uu\x17�,�\v\x11s\x1D�\0�ȦcT�\f;�<�\x19�M=J�!�>\x05� �\f+�x�\x0F1�P\x1F\x13b�}�D�K>S�c�l\x03���LU3�6ɀ��&� \x05#f{��mNmˌ�\x06�\0�M��\x11�[0W�Y=����]P�M��BDFB�\x12�\x12L��\x13c)m�{baȿ\x03�ط�\x1E]d&Z(rhC�\x02�:z�\x0FG)d��\a�R\x1D�/y�9\x05�>WVA�<iŘS\x02�ܭ�`����!I��\rU<�\v۱��<�\v:\x03�-�j\x1D%#��Rk+�_�V���\x1A�\x1D|�V�%��`�\e�yؿA�\x18Ü��,��?w�w����管.[#>^�X7�Ҵ��d��ʌP��\x16\x14�J\x15\x0EaSrJ�\t��\x1C����(OGT ��w��D@��\x11\\���t?�\x1C\a��{�f\"�S'�ɹ\f���s\x17\x0F�<��qem��\v�[\x12@�ힿ�+�Te���FW��\x1C%R\x17�/�\x02\\V���)�� �߹���w]*\x06\r*6Z�p��P�\x1C`I��n�ȑ\x11P\x1C\x17y��gٽ�Lۂi��npoн\\�/�iC���L\x11�6L!�u�5�z0hNu�QF\x7F�c��5+\x03ez���9\x0EP��{ȉ \x0FЌ�BN��q�dQ=�&,@�Z\x06�C�J.�\x1A�L+X���=#\n\v��,@\ez\n([kk��ާ+n�}z�s�\x14��\fGJO�fY\x0Fw��&h|zEp1�s��~\x1A\x1F;S:\x17\x0F \x0E��o\x15���T�H�Dh�z\x1D�Z�Z\x1EA�%��h\x02�SXv\x12����6��h~�J�^��\0N��utڋI�Y(-M�o�\\\x1F��k�:ͪ���6ظ�3\\�\th�6��u�����5�\bЖ�Y��>�\x0F}p\a��Yw�+2\x1C������\x13\x1C�1���\x16c�n�'J���\rz5_���7�3\0\0��PK\a\bǯ0��\x05\0\0\a\e\0\0PK\x01\x02\x14\0\x14\0\b\0\b\0\0\0\0\0���o�\x01\0\0�\x03\0\0\x0F\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0xl/workbook.xmlPK\x01\x02\x14\0\x14\0\b\0\b\0\0\0\0\0E�@�\x10\x01\0\0\x1C\x02\0\0\x11\0\0\0\0\0\0\0\0\0\0\0\0\0\b\x02\0\0docProps/core.xmlPK\x01\x02\x14\0\x14\0\b\0\b\0\0\0\0\0F��@k\x01\0\0�\x06\0\0\x13\0\0\0\0\0\0\0\0\0\0\0\0\0W\x03\0\0[Content_Types].xmlPK\x01\x02\x14\0\x14\0\b\0\b\0\0\0\0\0��{��\0\0\0d\x02\0\0\v\0\0\0\0\0\0\0\0\0\0\0\0\0\x03\x05\0\0_rels/.relsPK\x01\x02\x14\0\x14\0\b\0\b\0\0\0\0\0k��\x02d\x05\0\0[\e\0\0\r\0\0\0\0\0\0\0\0\0\0\0\0\0#\x06\0\0xl/styles.xmlPK\x01\x02\x14\0\x14\0\b\0\b\0\0\0\0\0a�\r�S\x01\0\0R\x03\0\0\x18\0\0\0\0\0\0\0\0\0\0\0\0\0�\v\0\0xl/worksheets/sheet4.xmlPK\x01\x02\x14\0\x14\0\b\0\b\0\0\0\0\0�S�`�\x01\0\0�\x05\0\0\x18\0\0\0\0\0\0\0\0\0\0\0\0\0[\r\0\0xl/worksheets/sheet2.xmlPK\x01\x02\x14\0\x14\0\b\0\b\0\0\0\0\0��m�\x01\x01\0\0�\x04\0\0\x1A\0\0\0\0\0\0\0\0\0\0\0\0\0f\x0F\0\0xl/_rels/workbook.xml.relsPK\x01\x02\x14\0\x14\0\b\0\b\0\0\0\0\0\x16��\x15,\x01\0\0l\x03\0\0\x14\0\0\0\0\0\0\0\0\0\0\0\0\0�\x10\0\0xl/sharedStrings.xmlPK\x01\x02\x14\0\x14\0\b\0\b\0\0\0\0\0�8 \t�\0\0\0 \x01\0\0\x10\0\0\0\0\0\0\0\0\0\0\0\0\0\x1D\x12\0\0docProps/app.xmlPK\x01\x02\x14\0\x14\0\b\0\b\0\0\0\0\0R\e�+T\x01\0\0R\x03\0\0\x18\0\0\0\0\0\0\0\0\0\0\0\0\0\x11\x13\0\0xl/worksheets/sheet3.xmlPK\x01\x02\x14\0\x14\0\b\0\b\0\0\0\0\0_{0`�\x01\0\0�\x05\0\0\x18\0\0\0\0\0\0\0\0\0\0\0\0\0�\x14\0\0xl/worksheets/sheet5.xmlPK\x01\x02\x14\0\x14\0\b\0\b\0\0\0\0\0ǯ0��\x05\0\0\a\e\0\0\x13\0\0\0\0\0\0\0\0\0\0\0\0\0�\x16\0\0xl/theme/theme1.xmlPK\x05\x06\0\0\0\0\r\0\r\0R\x03\0\0k\x1C\0\0\0\0"
+  /api/recon/v3/upload-file:
+    post:
+      tags:
+        - Recon APIs
+      summary: Upload File
+      description: This endpoint is used to upload a single file. See Create Recon api next.
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                environment:
+                  description: The environment of the transaction is either live OR sandbox
+                  type: string
+                  enum: [ live, sandbox ]
+              required:
+                - file
+                - environment
+      parameters:
+        - name: X-Portone-Client-Key
+          in: header
+          schema:
+            type: string
+          example: KkKesAaEAgsQNheX
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          description: The `Authorization` header is used to include the JWT for authenticating API requests; learn how to generate the token <a href="/docs/jwt-authentication" target="_blank">in this guide</a>
+          schema:
+            type: string
+          example: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJDSEFJUEFZIiwic3ViIjoiY2hhaXBheV9jbGllbnRfaWQiLCJpYXQiOjE1MTYyMzkwMjIsImV4cCI6MTgzMDQwMDMxNn0.CJHQTY-6v5ILILamo13BhVdgK68AIH1oPwXYH4Iyffs
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=UTF-8
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Date:
+              schema:
+                type: string
+                example: Fri, 20 Sep 2024 11:18:19 GMT
+            Content-Length:
+              schema:
+                type: integer
+                example: '436'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      file_key:
+                        type: string
+                        description: The key or path of the uploaded file in the storage bucket.
+                      file_link:
+                        type: string
+                        description: A URL link to access the uploaded file.
+                      file_name:
+                        type: string
+                        description: The name of the file after it was uploaded.
+                      original_file_name:
+                        type: string
+                        description: The original name of the file before uploading.
+                      recon_id:
+                        type: string
+                        description: The ID associated with the reconciliation process.
+                  message:
+                    type: string
+                    description: A message indicating the result of the file upload process.
+                  status_code:
+                    type: string
+                    description: Status code indicating the success of the operation.
+                  status_reason:
+                    type: string
+                    description: The reason or description of the status.
+              example:
+                data:
+                  file_key: UPLOAD/Lazada Paid out 290724-04.xlsx
+                  file_link: >-
+                    https://dev-simetrik-chaiport-recon-sync-bucket.s3.ap-southeast-1.amazonaws.com/UPLOAD/Lazada%20Paid%20out%20290724-04.xlsx
+                  file_name: Lazada Paid out 290724-04.xlsx
+                  original_file_name: Lazada Paid out 290724-04.xlsx
+                  recon_id: 193500e6-db79-4924-b0f6-58e157863745
+                message: File Uploaded Successfully!
+                status_code: '2000'
+                status_reason: SUCCESS
+        '400':
+          description: Bad Request
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=UTF-8
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Date:
+              schema:
+                type: string
+                example: Fri, 20 Sep 2024 11:16:45 GMT
+            Content-Length:
+              schema:
+                type: integer
+                example: '134'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    description: The description of the API request execution result.
+                    type: string
+                  status_code:
+                    description: Portone status code. Can be used for debugging errors.
+                    type: string
+                  status_reason:
+                    description: Portone status key. Can be used for debugging errors.
+                    type: string
+              examples:
+                example-0:
+                  summary: Corrupt File
+                  value:
+                    error: 'http: no such file'
+                    message: 'file is corrupted - http: no such file'
+                    status_code: '4001'
+                    status_reason: SYSTEM_ERROR
+                example-1:
+                  summary: invalid environment
+                  value:
+                    message: >-
+                      Appropriate environment not found, Please pass either
+                      sandbox/live value for environment
+                    status_code: '4001'
+                    status_reason: INVALID_ENVIRONMENT
+  /api/recon/v3/create-recon:
+    post:
+      tags:
+        - Recon APIs
+      summary: Create Recon
+      description: This endpoint is used to send the uploaded files(from upload-file api) for reconciliation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                file_key:
+                  description: File Key used to identify the file, you will get this from upload-file api
+                  type: string
+                file_link:
+                  description: File Link used to identify the file, you will get this from upload-file api
+                  type: string
+                file_name:
+                  description: File Name used to identify the file, you will get this from upload-file api
+                  type: string
+                recon_id:
+                  description: Unique id used to identify the file, you will get this from upload-file api
+                  type: string
+                data_source:
+                  description: The data source of file
+                  type: string
+                environment:
+                  description: The environment of the transaction is either live OR sandbox
+                  type: string
+                  enum: [ live, sandbox ]
+              required:
+                - file_key
+                - file_link
+                - file_name
+                - recon_id
+                - data_source
+                - environment
+              type: object
+              example:
+                data:
+                  - file_key: >-
+                      UPLOAD/Betadine Lazada Payout_Dec
+                      11-17-1722180477-6a01b1d1-bb00-4f62-a793-b6c997f1abde.xlsx
+                    file_link: >-
+                      https://dev-simetrik-chaiport-recon-sync-bucket.s3.ap-southeast-1.amazonaws.com/UPLOAD/Betadine%20Lazada%20Payout_Dec%2011-17-1722180477-6a01b1d1-bb00-4f62-a793-b6c997f1abde.xlsx
+                    file_name: Betadine Lazada Payout_Dec 11-17.xlsx
+                    recon_id: 6a01b1d1-bb00-4f62-a793-b6c997f1abde
+                    data_source: LAZADA_SETTLEMENT
+                environment: sandbox
+
+      parameters:
+        - name: X-Portone-Client-Key
+          in: header
+          schema:
+            type: string
+          example: KkKesAaEAgsQNheX
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          description: The `Authorization` header is used to include the JWT for authenticating API requests; learn how to generate the token <a href="/docs/jwt-authentication" target="_blank">in this guide</a>
+          schema:
+            type: string
+          example: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJDSEFJUEFZIiwic3ViIjoiY2hhaXBheV9jbGllbnRfaWQiLCJpYXQiOjE1MTYyMzkwMjIsImV4cCI6MTgzMDQwMDMxNn0.CJHQTY-6v5ILILamo13BhVdgK68AIH1oPwXYH4Iyffs
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=UTF-8
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Date:
+              schema:
+                type: string
+                example: Fri, 20 Sep 2024 11:27:47 GMT
+            Content-Length:
+              schema:
+                type: integer
+                example: '89'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    description: The description of the API request execution result.
+                    type: string
+                  status_code:
+                    description: Portone status code.
+                    type: string
+                  status_reason:
+                    description: Portone status key.
+                    type: string
+              example:
+                message: File Uploaded Successfully!
+                status_code: '2000'
+                status_reason: SUCCESS
+        '400':
+          description: Bad Request
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=UTF-8
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Date:
+              schema:
+                type: string
+                example: Fri, 20 Sep 2024 11:27:28 GMT
+            Content-Length:
+              schema:
+                type: integer
+                example: '124'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    description: The description of the API request execution result.
+                    type: string
+                  status_code:
+                    description: Portone status code. Can be used for debugging errors.
+                    type: string
+                  status_reason:
+                    description: Portone status key. Can be used for debugging errors.
+                    type: string
+                  error:
+                    description: The Error which occurred while initiating your reconciliation. Can be used for debugging errors.
+                    type: string
+              example:
+                error: record not found
+                message: Error while getting data source
+                status_code: '4000'
+                status_reason: BAD_REQUEST
+  /api/recon/v3/data-sources:
+    get:
+      tags:
+        - Recon APIs
+      summary: Get Data Sources
+      description: This endpoint is used to get the list of data sources for which reconciliation can be performed.
+      parameters:
+        - name: X-Portone-Client-Key
+          in: header
+          schema:
+            type: string
+          example: zxGojUVPpnBWIz
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          description: The `Authorization` header is used to include the JWT for authenticating API requests; learn how to generate the token <a href="/docs/jwt-authentication" target="_blank">in this guide</a>
+          schema:
+            type: string
+          example: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJDSEFJUEFZIiwic3ViIjoiY2hhaXBheV9jbGllbnRfaWQiLCJpYXQiOjE1MTYyMzkwMjIsImV4cCI6MTgzMDQwMDMxNn0.CJHQTY-6v5ILILamo13BhVdgK68AIH1oPwXYH4Iyffs
+        - name: environment
+          in: query
+          schema:
+            type: string
+          example: sandbox
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=UTF-8
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Date:
+              schema:
+                type: string
+                example: Fri, 20 Sep 2024 11:28:26 GMT
+            Content-Length:
+              schema:
+                type: integer
+                example: '1933'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      list:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            category:
+                              type: string
+                              description: The category of the data source (e.g., MARKETPLACE).
+                            config:
+                              type: object
+                              description: Configuration details.
+                              properties:
+                                is_sku_level:
+                                  type: boolean
+                                  description: Indicates if the configuration is at SKU level.
+                            currency:
+                              type: string
+                              description: The currency used in the data source (e.g., INR).
+                            display_name:
+                              type: string
+                              description: The display name of the data source.
+                            source_name:
+                              type: string
+                              description: The internal name of the data source.
+                      map:
+                        type: object
+                        additionalProperties:
+                          type: object
+                          properties:
+                            category:
+                              type: string
+                            config:
+                              type: object
+                              properties:
+                                is_sku_level:
+                                  type: boolean
+                            currency:
+                              type: string
+                            display_name:
+                              type: string
+                            source_name:
+                              type: string
+                      selection:
+                        type: object
+                        additionalProperties:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              max_date:
+                                type: string
+                                format: date-time
+                                description: The maximum date for the data.
+                              min_date:
+                                type: string
+                                format: date-time
+                                description: The minimum date for the data.
+                              source_name:
+                                type: string
+                                description: The source associated with the date range.
+                  message:
+                    type: string
+                    description: The description of the API request execution result.
+                  success:
+                    type: boolean
+                    description: Indicates whether the request was successful.
+              example:
+                data:
+                  list:
+                    - category: MARKETPLACE
+                      config: {}
+                      currency: INR
+                      display_name: Shopee Income
+                      source_name: SHOPEE_INCOME
+                    - category: MARKETPLACE
+                      config: {}
+                      currency: INR
+                      display_name: ISTORE_WMS
+                      source_name: ISTORE_WMS
+                    - category: MARKETPLACE
+                      config:
+                        is_sku_level: true
+                      currency: INR
+                      display_name: Lazada Settlement
+                      source_name: LAZADA_SETTLEMENT
+                    - category: MARKETPLACE
+                      config: {}
+                      currency: INR
+                      display_name: COMMERCE_ASIA_EWMS
+                      source_name: COMMERCE_ASIA_EWMS
+                    - category: MARKETPLACE
+                      config:
+                        is_sku_level: true
+                      currency: INR
+                      display_name: Lazada Order
+                      source_name: LAZADA_ORDER
+                  map:
+                    COMMERCE_ASIA_EWMS:
+                      category: MARKETPLACE
+                      config: {}
+                      currency: INR
+                      display_name: COMMERCE_ASIA_EWMS
+                      source_name: COMMERCE_ASIA_EWMS
+                    ISTORE_WMS:
+                      category: MARKETPLACE
+                      config: {}
+                      currency: INR
+                      display_name: ISTORE_WMS
+                      source_name: ISTORE_WMS
+                    LAZADA_ORDER:
+                      category: MARKETPLACE
+                      config:
+                        is_sku_level: true
+                      currency: INR
+                      display_name: Lazada Order
+                      source_name: LAZADA_ORDER
+                    LAZADA_SETTLEMENT:
+                      category: MARKETPLACE
+                      config:
+                        is_sku_level: true
+                      currency: INR
+                      display_name: Lazada Settlement
+                      source_name: LAZADA_SETTLEMENT
+                    SHOPEE_INCOME:
+                      category: MARKETPLACE
+                      config: {}
+                      currency: INR
+                      display_name: Shopee Income
+                      source_name: SHOPEE_INCOME
+                  selection:
+                    COMMERCE_ASIA_EWMS:
+                      - max_date: '2023-12-16T00:00:00Z'
+                        min_date: '2023-12-10T00:00:00Z'
+                        source_name: LAZADA_ORDER
+                    LAZADA_ORDER:
+                      - max_date: '2023-12-16T00:00:00Z'
+                        min_date: '2023-12-10T00:00:00Z'
+                        source_name: LAZADA_SETTLEMENT
+                    LAZADA_SETTLEMENT:
+                      - max_date: '2023-12-16T00:00:00Z'
+                        min_date: '2023-12-10T00:00:00Z'
+                        source_name: ISTORE_WMS
+                    SHOPEE_INCOME:
+                      - max_date: '2024-07-30T00:00:00Z'
+                        min_date: '2024-04-30T00:00:00Z'
+                        source_name: ISTORE_WMS
+                message: Successfully retrieved data sources
+                success: true
+        '400':
+          description: Bad Request
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=UTF-8
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Date:
+              schema:
+                type: string
+                example: Fri, 20 Sep 2024 11:28:13 GMT
+            Content-Length:
+              schema:
+                type: integer
+                example: '162'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    description: The description of the API request execution result.
+                    type: string
+                  status_code:
+                    description: Portone status code. Can be used for debugging errors.
+                    type: string
+                  status_reason:
+                    description: Portone status key. Can be used for debugging errors.
+                    type: string
+              example:
+                message: >-
+                  Appropriate environment not found, Please pass either
+                  sandbox/live value for environment
+                status_code: '4001'
+                status_reason: INVALID_ENVIRONMENT

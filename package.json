@@ -1,0 +1,28 @@
+{
+  "type": "module",
+  "name": "portone-global-mcp-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "bin": {
+    "portone-global-mcp-server": "./build/index.js"
+  },
+  "scripts": {
+    "build": "tsc && cp -r src/resources build/resources",
+    "start": "node build/index.js"
+  },
+  "keywords": [],
+  "author": "Nikhil Shinde",
+  "license": "ISC",
+  "description": "PortOne Global MCP Server",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "express": "^4.21.2",
+    "js-yaml": "^4.1.0",
+    "zod": "^3.25.55"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^22.15.30",
+    "typescript": "^5.8.3"
+  }
+}
