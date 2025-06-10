@@ -1,19 +1,43 @@
 {
+  "name": "@portone-global/mcp-server",
+  "version": "1.1.0",
+  "description": "PortOne Global MCP Server: Model Context Protocol server for PortOne documentation and API schemas.",
   "type": "module",
-  "name": "portone-global-mcp-server",
-  "version": "1.0.0",
-  "main": "index.js",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "files": [
+    "build",
+    "resources",
+    "README.md"
+  ],
   "bin": {
     "portone-global-mcp-server": "./build/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/portone-global-mcp-server.git"
+  },
+  "homepage": "https://github.com/your-org/portone-global-mcp-server",
+  "keywords": [
+    "portone",
+    "mcp",
+    "payments",
+    "documentation",
+    "openapi",
+    "cli"
+  ],
+  "author": "Nikhil Shinde",
+  "license": "ISC",
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "build": "rm -rf build && tsc && cp -r src/resources build/resources",
     "start": "node build/index.js"
   },
-  "keywords": [],
-  "author": "Nikhil Shinde",
-  "license": "ISC",
-  "description": "PortOne Global MCP Server",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.1",
     "express": "^4.21.2",

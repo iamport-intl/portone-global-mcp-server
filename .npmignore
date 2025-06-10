@@ -1,0 +1,12 @@
+node_modules
+src
+.env
+.git
+.vscode
+test
+coverage
+dist
+*.log
+*.tsbuildinfo
+.idea
+.DS_Store 
