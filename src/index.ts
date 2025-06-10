@@ -1,9 +1,16 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
+import path from "path";
+import { fileURLToPath } from "url";
 
 import { readOpenApiSchemas } from "./tools/read_openapi_schema.js";
 import { getDocsFolderKeywordPathMapping } from "./tools/list_portone_docs.js";
+import { loadResources } from "./loader/index.js";
+import { readPortoneDoc } from "./tools/read_portone_docs.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Create server instance
 const server = new McpServer({
@@ -16,6 +23,9 @@ const server = new McpServer({
 });
 
 async function main() {
+    const resourcesDir = path.resolve(__dirname, "../build/resources");
+    const resources = await loadResources(resourcesDir);
+    const documents = resources.documents;
 
     server.tool(
         "read_openapi_schema",
@@ -41,7 +51,7 @@ async function main() {
     );
     
     server.tool(
-        "list_portone_docs_folders",
+        "list_portone_docs",
         "List docs for the PortOne Global documentation",
         {},
         async () => {
@@ -53,6 +63,23 @@ async function main() {
                         text: JSON.stringify(mapping, null, 2),
                     },
                 ],
+            };
+        }
+    );
+
+    server.tool(
+        "read_portone_doc",
+        "Read a PortOne Global documentation file",
+        { docPath: z.string() },
+        async ({ docPath }: { docPath: string }) => {
+            const content = await readPortoneDoc(resources, docPath);
+            return {
+                content: [
+                    {
+                        type: "text",
+                        text: content,
+                    },
+                ],  
             };
         }
     );

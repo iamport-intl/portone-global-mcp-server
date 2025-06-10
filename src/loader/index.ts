@@ -1,12 +1,10 @@
 import path from 'path';
 import fs from 'fs/promises';
 import { loadMarkdownDocs, MarkdownDocument } from './markdown.js';
-import { loadSchema, Schema } from './schema.js';
 
 export interface Documents {
   readme: string;
   markdownDocs: Record<string, MarkdownDocument>;
-  schema: Schema;
 }
 
 export async function loadDocuments(docsDir: string): Promise<Documents> {
@@ -19,13 +17,9 @@ export async function loadDocuments(docsDir: string): Promise<Documents> {
   if (!readmeDoc) {
     throw new Error(`README.md not found in ${docsDir}`);
   }
-  // Load schema files
-  const schemaDir = path.join(docsDir, 'schema');
-  const schema = await loadSchema(schemaDir);
   return {
     readme: readmeDoc.content,
     markdownDocs,
-    schema,
   };
 }
 

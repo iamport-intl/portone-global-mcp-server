@@ -7,7 +7,7 @@
     "portone-global-mcp-server": "./build/index.js"
   },
   "scripts": {
-    "build": "tsc && cp -r src/resources build/resources",
+    "build": "rm -rf build && tsc && cp -r src/resources build/resources",
     "start": "node build/index.js"
   },
   "keywords": [],
