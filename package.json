@@ -1,6 +1,6 @@
 {
   "name": "@portone-global/mcp-server",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "PortOne Global MCP Server: Model Context Protocol server for PortOne documentation and API schemas.",
   "type": "module",
   "main": "build/index.js",
