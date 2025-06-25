@@ -182,13 +182,3 @@ Error codes
 | 8002 | PAYMENT\_AUTHENTICATION\_ERROR |
 | 8003 | PAYMENT\_PROCESSING\_ERROR |
 | 8004 | RISK\_VALIDATION\_ERROR |
-
-Updated8 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No

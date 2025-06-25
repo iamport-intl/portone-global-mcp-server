@@ -54,15 +54,3 @@ As the master merchant, you can activate or deactivate sub-merchants:
 
 
 Inactive sub-merchants will be restricted from processing payments or accessing the system until reactivated.
-
-Updated8 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

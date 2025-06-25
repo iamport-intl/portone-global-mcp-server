@@ -371,15 +371,3 @@ document.redirect.submit();
 ### Reference links   [Skip link to Reference links](https://docs.portone.cloud/docs/ipay88\#reference-links)
 
 - [iPay88 Indonesia Integration guide](https://ipay88.co.id/docs/pdf/iPay88_API_2.0.9_Technical_Documentation.pdf)
-
-Updated8 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

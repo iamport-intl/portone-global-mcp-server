@@ -179,15 +179,3 @@ Payment Pages offer a versatile solution for various business needs. Here are so
 - **Use Case:** The educator can use a Payment Page for students to enroll and pay for courses, providing a seamless registration and payment experience.
 
 These use cases illustrate how Payment Pages can simplify payment collection across various industries, making them a valuable tool for businesses and organizations of all sizes.
-
-Updated7 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

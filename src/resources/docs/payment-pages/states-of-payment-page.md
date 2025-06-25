@@ -81,15 +81,3 @@ Payment Pages in the PortOne merchant portal can exist in either an **Active** o
 **Impact on Existing Transactions:**
 
 - Switching a Payment Page to Inactive will not affect transactions that have already been initiated. These transactions will continue to process normally unless canceled by the user.
-
-Updated8 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

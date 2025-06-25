@@ -87,15 +87,3 @@ JavaScript
 
 - [Momopay Integration guide](https://developers.momo.vn/#/docs/en/testing_information)
 - [Momopay Testing Data](https://developers.momo.vn/#/docs/en/testing_information)
-
-Updated8 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

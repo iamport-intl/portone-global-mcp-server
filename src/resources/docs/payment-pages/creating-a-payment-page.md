@@ -9,17 +9,7 @@ Payment-Page-Configuration
 
 [Payment-Page-Configuration](https://www.loom.com/share/696a72b944c2435e914cdc4d61a76dbf?source=embed_watch_on_loom_cta "Payment-Page-Configuration")
 
-3 min
-
-18 views
-
-0
-
 [Open video in Loom](https://www.loom.com/share/696a72b944c2435e914cdc4d61a76dbf?source=embed_watch_on_loom_cta "Open video in Loom")
-
-1.2×
-
-3 min⚡️4 min 22 sec3 min 29 sec2 min 54 sec2 min 19 sec2 min 3 sec1 min 44 sec1 min 23 sec
 
 Your user agent does not support the HTML5 Video element.
 
@@ -27,17 +17,6 @@ Your user agent does not support the HTML5 Video element.
 
 [Payment-Page-Configuration](https://www.loom.com/share/696a72b944c2435e914cdc4d61a76dbf?source=embed_watch_on_loom_cta "Payment-Page-Configuration")
 
-3 min
-
-18 views
-
-0
-
-[Open video in Loom](https://www.loom.com/share/696a72b944c2435e914cdc4d61a76dbf?source=embed_watch_on_loom_cta "Open video in Loom")
-
-1.2×
-
-3 min⚡️4 min 22 sec3 min 29 sec2 min 54 sec2 min 19 sec2 min 3 sec1 min 44 sec1 min 23 sec
 
 ## Steps to Create a Payment Page using PortOne Admin Console   [Skip link to Steps to Create a Payment Page using PortOne Admin Console](https://docs.portone.cloud/docs/creating-a-payment-page\#steps-to-create-a-payment-page-using-portone-admin-console)
 
@@ -138,15 +117,3 @@ Made with
 * * *
 
 This documentation outlines the essential steps for creating a Payment Page using the CHAI Dashboard, guiding users through setup, customization, and publication.
-
-Updated7 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

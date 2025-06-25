@@ -96,13 +96,3 @@ JavaScript
 ### Reference links   [Skip link to Reference links](https://docs.portone.cloud/docs/payletter\#reference-links)
 
 - [API Docs](https://www.payletter.com/en/technical/index_global#payletter)
-
-Updated2 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No

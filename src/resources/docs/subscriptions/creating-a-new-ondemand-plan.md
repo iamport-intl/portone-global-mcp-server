@@ -80,15 +80,3 @@ Provide the required information to set up your On-Demand plan:
 5. **Verification**: Double-check all details before submitting the form.
 
 For further assistance, visit the [PortOne Support Center](https://support.portone.cloud/).
-
-Updated6 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

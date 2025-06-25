@@ -67,15 +67,3 @@ The App-to-App Flow is used when the payment method requires the user to complet
 - This entire flow is handled by the SDK.
 
 ![Embed Flow](https://i.imgur.com/LeLpvjQ.gif)
-
-Updated6 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

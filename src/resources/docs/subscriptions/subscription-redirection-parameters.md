@@ -219,16 +219,3 @@ The total additional cost associated with the subscription.
 
 The total amount of the subscription, including additional costs.
 
-* * *
-
-Updated5 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

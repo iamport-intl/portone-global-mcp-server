@@ -656,15 +656,3 @@ Calculate hash as mentioned earlier, verify if it is equal to signature\_hash re
 > ## 📘  Note
 >
 > Refer to [Payment Link Webhook Parameters](https://docs.portone.cloud/docs/payment-link-webhook) for the complete list of payment link webhook parameters.
-
-Updated8 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

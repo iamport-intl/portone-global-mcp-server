@@ -84,15 +84,3 @@ Made with
 ### Contact   [Skip link to Contact](https://docs.portone.cloud/docs/woocommerce-plugin\#contact)
 
 In case of any questions, issues please feel free to reach out to the PortOne Support team at [contact@portone.io](mailto:contact@portone.io)
-
-Updated8 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

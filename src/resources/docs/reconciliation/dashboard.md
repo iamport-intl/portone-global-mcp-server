@@ -119,15 +119,3 @@ Beyond the real-time insights from the Dashboard, our tool generates detailed re
 ## Conclusion   [Skip link to Conclusion](https://docs.portone.cloud/docs/dashboard\#conclusion)
 
 Our Dashboard is the key to a successful reconciliation process, giving businesses the insights and tools they need to keep accurate financial records, ensure compliance, and make informed decisions. With comprehensive reporting, customizable views, and a user-friendly interface, the Dashboard helps you take control of your reconciliation process and achieve greater financial transparency.
-
-Updated7 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

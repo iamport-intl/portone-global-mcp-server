@@ -576,15 +576,3 @@ Calculate hash as mentioned earlier, verify if it is equal to signature\_hash re
 > ## 📘  Note
 >
 > Refer to [Redirection Parameters](https://docs.portone.cloud/docs/redirect-parameters) for the complete list of redirection parameters.
-
-Updated8 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

@@ -83,15 +83,3 @@ The Payment Page Details screen in the PortOne merchant portal provides a compre
 * * *
 
 This documentation covers the key features and functionalities of the Payment Page Details screen, enabling merchants to efficiently manage and monitor their Payment Pages within the PortOne merchant portal.
-
-Updated8 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

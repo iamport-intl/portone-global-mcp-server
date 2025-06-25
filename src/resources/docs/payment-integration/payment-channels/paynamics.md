@@ -82,15 +82,3 @@ _Note: Please choose Express Pay out then use this test account_
 | Username | 09193890579 |
 | Password | Password@1 |
 | OTP | 123456 |
-
-Updated8 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

@@ -66,17 +66,3 @@ The **Regular Subscription** process involves creating plans, defining the billi
 2. **Memberships:** Gym memberships or club access with recurring fees.
 3. **Educational Platforms:** Online course subscriptions with periodic billing.
 4. **E-Commerce:** Recurring deliveries of essentials like groceries or meal kits.
-
-* * *
-
-Updated4 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

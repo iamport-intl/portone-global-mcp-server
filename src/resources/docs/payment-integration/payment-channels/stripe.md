@@ -86,15 +86,3 @@ JavaScript
 
 - [Stripe API Reference](https://stripe.com/docs/api)
 - [Stripe Docs](https://stripe.com/docs)
-
-Updated4 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

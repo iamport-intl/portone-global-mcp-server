@@ -250,17 +250,3 @@ The support email for the transaction
 ###### _string_   [Skip link to [object Object]](https://docs.portone.cloud/docs/redirect-parameters\#string-28)
 
 The support phone for the transaction
-
-* * *
-
-Updated8 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

@@ -157,15 +157,3 @@ The Data Ingestion screen provides the control, flexibility, and accuracy needed
 ## Conclusion   [Skip link to Conclusion](https://docs.portone.cloud/docs/ingestion\#conclusion)
 
 Effective data ingestion is the backbone of successful reconciliation. Our Ingestion tool gives you the power to handle large amounts of data from various sources, ensuring all the important information is captured, organized, and ready for accurate reconciliation. With real-time tracking, detailed metadata, and strong error handling, you can be confident that your reconciliation process uses the most accurate and complete data.
-
-Updated7 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

@@ -155,15 +155,3 @@ Business owners require accurate and timely financial insights to make informed 
 ## Conclusion   [Skip link to Conclusion](https://docs.portone.cloud/docs/overview-reconciliation\#conclusion)
 
 Our Reconciliation feature collects your transaction data, matches it with external records, and helps you fix any mismatches. This improves the accuracy of financial operations and gives you more control over your records. Our tool reduces manual work, minimises errors, and keeps your financial data accurate and compliant with industry standards.
-
-Updated6 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

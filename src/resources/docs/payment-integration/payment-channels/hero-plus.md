@@ -57,15 +57,3 @@ JavaScript
     "pmt_method": "HEROPLUS_BNPL",
 
 ```
-
-Updated8 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

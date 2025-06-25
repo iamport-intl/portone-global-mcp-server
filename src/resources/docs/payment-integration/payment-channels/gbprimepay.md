@@ -103,15 +103,3 @@ JavaScript
 
 - [GBPrimePay Integration guide](https://doc.gbprimepay.com/)
 - [GBPrimePay QR Scanner tool for QRCASH Method](http://qrtool.globalprimepay.com/qr)
-
-Updated5 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

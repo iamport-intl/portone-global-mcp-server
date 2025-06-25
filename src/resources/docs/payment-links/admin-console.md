@@ -31,18 +31,6 @@ Your user agent does not support the HTML5 Video element.
 
 [Payment-Link-Configuration](https://www.loom.com/share/677718d2e4794ea5bc9dbc2842c2d6de?source=embed_watch_on_loom_cta "Payment-Link-Configuration")
 
-3 min
-
-17 views
-
-0
-
-[Open video in Loom](https://www.loom.com/share/677718d2e4794ea5bc9dbc2842c2d6de?source=embed_watch_on_loom_cta "Open video in Loom")
-
-1.2×
-
-3 min⚡️3 min 45 sec3 min2 min 30 sec2 min1 min 46 sec1 min 30 sec1 min 12 sec
-
 ## Steps to Create and Manage a Payment Link   [Skip link to Steps to Create and Manage a Payment Link](https://docs.portone.cloud/docs/admin-console\#steps-to-create-and-manage-a-payment-link)
 
 ![](https://files.readme.io/b3dad135bbf584d69593926803227a06921339cba20a54d7639e62ea5952c67a-58f3413e86ec5f5903bc58b51aec23fa0171673304e6d07b16d5beffcc38caae-Paymentlink5678.png)
@@ -136,12 +124,6 @@ Scribe \| Embed Creating\_a\_Payment\_Link\_in\_Portone\_Cloud\_\_OKMEoGj6ROynYC
 
 # Creating a Payment Link
 
-26 Steps
-
-59 seconds
-
-![Portone](https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://portone.io&size=64)Portone
-
 Step 0 of 26
 
 Get Started
@@ -152,15 +134,3 @@ Made with
 [open scrolling step version in new tab for improved accessibility](https://scribehow.com/shared/Creating_a_Payment_Link__OKMEoGj6ROynYCsfVCqRWg)
 
 By following these steps, you can easily create a Payment Link in the PortOne Dashboard. For additional support or queries, please refer to the PortOne support resources or contact customer support.
-
-Updated7 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

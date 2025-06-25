@@ -110,15 +110,3 @@ Our Analytics feature is designed to equip businesses with **real-time, actionab
 - Address discrepancies with ease.
 
 Whether tracking performance across regions, currencies, or time intervals, our Analytics Dashboard is the ultimate tool for success in today’s fast-paced, data-driven world.
-
-Updated5 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

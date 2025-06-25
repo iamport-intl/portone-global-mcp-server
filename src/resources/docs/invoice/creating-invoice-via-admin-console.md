@@ -149,15 +149,3 @@ Carefully fill in the details for the new invoice. Below are the fields you need
 - Customizable fields to suit unique business needs.
 
 This step-by-step guide ensures smooth invoice creation while leveraging PortOne's advanced features for optimized invoicing and payment collection.
-
-Updated6 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

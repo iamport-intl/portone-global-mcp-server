@@ -64,15 +64,3 @@ Text
 ### Reference links   [Skip link to Reference links](https://docs.portone.cloud/docs/global-payments\#reference-links)
 
 - [API Docs](https://docs.gpaunz.com/docs/api)
-
-Updated4 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

@@ -138,15 +138,3 @@ The payment channel used to make the payment for the transaction
 The payment method used to make the payment for the transaction
 
 * * *
-
-Updated8 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

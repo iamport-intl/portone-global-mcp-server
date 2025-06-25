@@ -48,15 +48,3 @@ Payletter Korea currently only supports KRW(₩) currency.
 ### Reference links   [Skip link to Reference links](https://docs.portone.cloud/docs/payletter-kr\#reference-links)
 
 - [API Docs](https://www.payletter.com/en/technical/index#introduction)
-
-Updated2 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

@@ -60,15 +60,3 @@ Refer to the [Regular Subscription API Documentation](https://docs.portone.cloud
 2. **Clear Descriptions:** Provide detailed descriptions for plans to ensure transparency.
 3. **Customer Communication:** Send reminders for upcoming charges and successful renewals.
 4. **Data Security:** Safeguard customer data and follow PCI DSS compliance guidelines.
-
-Updated6 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

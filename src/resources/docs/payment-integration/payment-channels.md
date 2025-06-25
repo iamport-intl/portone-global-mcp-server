@@ -60,15 +60,3 @@ title: "Payment Channels"
 ## South Africa, Nigeria & Kenya   [Skip link to South Africa, Nigeria & Kenya](https://docs.portone.cloud/docs/payment-channels\#south-africa-nigeria--kenya)
 
 [![Klasha](https://chaiport-pg-icons-latest-nov.s3.ap-southeast-1.amazonaws.com/klasha.png)](https://docs.portone.cloud/docs/klasha)
-
-Updated6 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

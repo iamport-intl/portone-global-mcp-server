@@ -437,13 +437,3 @@ The user configured field 4
 The user configured field 5
 
 * * *
-
-Updated8 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No

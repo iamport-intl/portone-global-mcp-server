@@ -13,35 +13,11 @@ integration\_flutter
 
 [integration\_flutter](https://www.loom.com/share/52ab7b8232ce4c5198556b9a2378bf61?source=embed_watch_on_loom_cta "integration_flutter")
 
-4 min
-
-13 views
-
-0
-
-[Open video in Loom](https://www.loom.com/share/52ab7b8232ce4c5198556b9a2378bf61?source=embed_watch_on_loom_cta "Open video in Loom")
-
-1.2×
-
-4 min⚡️5 min 32 sec4 min 26 sec3 min 41 sec2 min 57 sec2 min 36 sec2 min 13 sec1 min 46 sec
-
 Your user agent does not support the HTML5 Video element.
 
 ![](https://cdn.loom.com/avatars/default-avatar.svg)
 
 [integration\_flutter](https://www.loom.com/share/52ab7b8232ce4c5198556b9a2378bf61?source=embed_watch_on_loom_cta "integration_flutter")
-
-4 min
-
-13 views
-
-0
-
-[Open video in Loom](https://www.loom.com/share/52ab7b8232ce4c5198556b9a2378bf61?source=embed_watch_on_loom_cta "Open video in Loom")
-
-1.2×
-
-4 min⚡️5 min 32 sec4 min 26 sec3 min 41 sec2 min 57 sec2 min 36 sec2 min 13 sec1 min 46 sec
 
 * * *
 
@@ -1603,43 +1579,3 @@ checkoutRequest.routingParams = RoutingParams(type = "failover", routeRef)
    - price
    - promo\_discount (0 accepted)
    - shipping\_charges (0 accepted)
-
-Updated6 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-🦉
-
-# Recipe Title
-
-Recipe Description
-
-​x
-
-```
-
-```
-
-1{"success":true}
-
-🦉
-
-# Recipe Title
-
-Recipe Description
-
-​x
-
-```
-
-```
-
-1{"success":true}
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

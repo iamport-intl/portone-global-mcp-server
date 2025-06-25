@@ -148,15 +148,3 @@ The invoice life cycle outlines the different statuses an invoice can transition
 | Voided | Invoice is canceled and cannot be used further. | None (final state) |
 
 This invoice life cycle ensures a clear and organized process for managing invoices at every stage, enhancing both business efficiency and customer satisfaction.
-
-Updated6 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

@@ -218,15 +218,3 @@ curl 'https://api.portone.cloud/api/paymentLink' \
 Creating payment links on PortOne is simple and can be done either manually via the Dashboard or automatically via APIs. Follow the above steps to ensure you set up your payment links correctly and efficiently.
 
 For additional support or queries, please refer to the PortOne support resources or contact customer support.
-
-Updated10 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

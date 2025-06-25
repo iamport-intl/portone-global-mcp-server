@@ -56,15 +56,3 @@ Currently following webhook types are supported on PortOne
 2. **Refund Webhook**: Triggered when the refund's status changes. Refer [Refund Webhook](https://docs.portone.cloud/docs/refund-webhook) section for more information.
 3. **Payment Link Webhook**: Triggered when the payment link's status changes. Refer [Payment Link Webhook](https://docs.portone.cloud/docs/payment-link-webhook) section for more information.
 4. **Subscription Link Webhook**: Triggered when a subscription link's status changes. Refer [Subscription Link Webhook](https://docs.portone.cloud/docs/subscription-link-webhook) section for more information.
-
-Updated7 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

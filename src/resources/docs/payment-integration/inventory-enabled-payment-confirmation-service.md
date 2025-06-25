@@ -258,15 +258,3 @@ Merchants should thoroughly test the endpoint to ensure it:
 * * *
 
 By implementing this endpoint, merchants can seamlessly integrate with PortOne's payment processing flow, ensuring that payments are only completed when inventory is available. This enhances the customer experience and prevents overselling.
-
-Updated4 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

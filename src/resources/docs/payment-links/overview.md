@@ -25,21 +25,6 @@ Payment-Link-Pitch
 
 Your user agent does not support the HTML5 Video element.
 
-![](https://cdn.loom.com/avatars/default-avatar.svg)
-
-[Payment-Link-Pitch](https://www.loom.com/share/76a816562f434c3189c169680ac137d8?source=embed_watch_on_loom_cta "Payment-Link-Pitch")
-
-3 min
-
-32 views
-
-0
-
-[Open video in Loom](https://www.loom.com/share/76a816562f434c3189c169680ac137d8?source=embed_watch_on_loom_cta "Open video in Loom")
-
-1.2×
-
-2 min 52 sec⚡️3 min 35 sec2 min 52 sec2 min 23 sec1 min 54 sec1 min 41 sec1 min 26 sec1 min 8 sec
 
 ## What are Payment Links?   [Skip link to What are Payment Links?](https://docs.portone.cloud/docs/overview-2\#what-are-payment-links)
 
@@ -157,15 +142,3 @@ Payment links are versatile and can be used in various scenarios to streamline p
 - **Cross-Border Payments**: Facilitate payments from international customers without needing a multi-currency payment gateway.
 
 Payment links simplify the payment process, making it accessible and convenient for both businesses and customers across a variety of use cases.
-
-Updated7 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

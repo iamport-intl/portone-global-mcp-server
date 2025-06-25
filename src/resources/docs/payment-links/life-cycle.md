@@ -42,15 +42,3 @@ In the payment process, a generated payment link can transition through several 
 Understanding the lifecycle of payment links helps merchants manage payment collections effectively. By monitoring and taking appropriate actions based on the state of each link, merchants can ensure smooth transactions and efficient payment management.
 
 For further details on API usage and other functionalities, please refer to the respective sections in the documentation.
-
-Updated7 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

@@ -95,13 +95,3 @@ JavaScript
 ### Reference links   [Skip link to Reference links](https://docs.portone.cloud/docs/triple-a\#reference-links)
 
 - [TripleA integration guide](https://triplea-technologies.stoplight.io/docs/triplea-api-doc/ZG9jOjY3NDE3NDI-introduction)
-
-Updatedabout 1 month ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No

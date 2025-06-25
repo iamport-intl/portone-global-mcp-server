@@ -112,15 +112,3 @@ The Fee Configuration screen provides your finance team with detailed control ov
 ## Conclusion   [Skip link to Conclusion](https://docs.portone.cloud/docs/configurations\#conclusion)
 
 Getting the configuration right is key to successful reconciliation. Our Configuration tool gives you the flexibility and precision needed to tailor the process to your business’s financial structure, reducing discrepancies and improving overall financial accuracy.
-
-Updated7 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

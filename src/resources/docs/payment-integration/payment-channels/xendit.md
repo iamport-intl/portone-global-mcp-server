@@ -101,15 +101,3 @@ JavaScript
 
 - [Xendit API Reference](https://developers.xendit.co/api-reference/)
 - [Xendit Docs](https://docs.xendit.co/)
-
-Updated8 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

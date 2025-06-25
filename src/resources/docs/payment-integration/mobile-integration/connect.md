@@ -71,15 +71,3 @@ The Web Flow redirects users to the webView to complete the payment process. Aft
 - The merchant manages all UI elements
 
 ![Checkout Process](https://i.imgur.com/wXHUbs6.gif)
-
-Updated7 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

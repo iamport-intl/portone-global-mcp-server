@@ -84,15 +84,3 @@ A chronological record of all actions taken on the invoice, including:
 - **Audit Logs**: Utilize the timeline for audit purposes to understand invoice lifecycle events.
 
 This intuitive interface ensures seamless invoice management and enhances businesses' administrative workflow.
-
-Updated6 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

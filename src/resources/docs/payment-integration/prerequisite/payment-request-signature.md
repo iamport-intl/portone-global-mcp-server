@@ -574,29 +574,3 @@ The url of failure page hosted by merchant
 > ## 📘  Note
 >
 > Refer to [Payment Request](https://docs.portone.cloud/reference/post_api-initiatepayment) for the complete list of payment request parameters.
-
-Updated8 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-🦉
-
-# Recipe Title
-
-Recipe Description
-
-​x
-
-```
-
-```
-
-1{"success":true}
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

@@ -96,15 +96,3 @@ JavaScript
 
 - [VnPay integration](https://sandbox.vnpayment.vn/apis/docs/gioi-thieu/)
 - [Additional VnPay testing data](https://github.com/naustudio/node-vn-payments/blob/master/CONTRIBUTING.md)
-
-Updated8 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

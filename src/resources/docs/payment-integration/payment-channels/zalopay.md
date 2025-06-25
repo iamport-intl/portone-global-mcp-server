@@ -101,15 +101,3 @@ Download ZaloPay Sandbox App for making test payments:
 ### Reference links   [Skip link to Reference links](https://docs.portone.cloud/docs/zalopay\#reference-links)
 
 - [ZaloPay integration](https://docs.zalopay.vn/en/v1/start/){:target="\_blank"}.
-
-Updated8 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

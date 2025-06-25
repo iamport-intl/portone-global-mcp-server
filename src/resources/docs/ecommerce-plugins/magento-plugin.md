@@ -13,14 +13,7 @@ This extension adds a new payment option to your Magento store's checkout page, 
 
 1. Navigate to the Magento root directory:
 
-
-
 bash
-
-
-
-
-
 ```rdmd-code lang-bash theme-light
 
 cd $ROOT
@@ -31,14 +24,7 @@ cd $ROOT
 
 **Note**: If the code directory does not exist, create it.
 
-
-
 bash
-
-
-
-
-
 ```rdmd-code lang-Text theme-light
 
 cd app/code
@@ -48,29 +34,15 @@ cd app/code
 3. Download the extension zip file:
 
 
-
 bash
-
-
-
-
-
 ```rdmd-code lang-Text theme-light
 
 wget <extension_url>
-
 ```
 
 4. Unzip the downloaded extension file:
 
-
-
 bash
-
-
-
-
-
 ```rdmd-code lang-Text theme-light
 
 tar -xf <extension_file>
@@ -166,16 +138,3 @@ app/code/PortOne/Payment/view/frontend/web/images/portone-logo.png
 pub/media/portone/portone-logo.png
 
 ```
-
-
-Updated10 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

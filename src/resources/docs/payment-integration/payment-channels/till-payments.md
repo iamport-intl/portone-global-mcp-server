@@ -57,15 +57,3 @@ Text
 
 - [API Docs](https://gateway.tillpayments.com/documentation/json-direct-pci-enabled-api?json#transactionwithcard-request-basic-scheme)
 - [Test Cards](https://gateway.tillpayments.com/documentation/connectors)
-
-Updated8 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

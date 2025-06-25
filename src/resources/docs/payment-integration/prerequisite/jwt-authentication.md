@@ -513,29 +513,3 @@ if __name__ == "__main__":
     main()
 
 ```
-
-Updated8 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-🦉
-
-# Recipe Title
-
-Recipe Description
-
-​x
-
-```
-
-```
-
-1{"success":true}
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

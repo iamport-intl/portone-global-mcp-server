@@ -499,15 +499,3 @@ Order Reference sent by merchant to create the plan
 > ## 📘  Note
 >
 > Refer to [Plan Request](https://docs.portone.cloud/reference/post_api-subscription-createplan) for the complete list of plan request parameters.
-
-Updated7 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

@@ -98,15 +98,3 @@ JavaScript
 ### Reference links   [Skip link to Reference links](https://docs.portone.cloud/docs/tazapay\#reference-links)
 
 - [API Reference](https://docs.tazapay.com/reference/introduction)
-
-Updatedabout 2 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

@@ -325,28 +325,3 @@ JSON
 
 This document serves as a comprehensive guide to creating **On-Demand Subscriptions** using the PortOne API.
 
-Updated6 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-🦉
-
-# Recipe Title
-
-Recipe Description
-
-​x
-
-```
-
-```
-
-1{"success":true}
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

@@ -105,15 +105,3 @@ Follow the detailed steps below:
    - Once satisfied, click on the **Create Invoice** button to finalize and generate the invoice.
 
 Using this method ensures a fast and efficient way to generate invoices while allowing flexibility to adapt to specific client or business needs.
-
-Updated6 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

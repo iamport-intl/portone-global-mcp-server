@@ -61,15 +61,3 @@ JSON
 #### Test application details   [Skip link to Test application details](https://docs.portone.cloud/docs/instamojo\#test-application-details)
 
 - [Test card](https://support.instamojo.com/hc/en-us/articles/208485675-Test-or-Sandbox-Account)
-
-Updated8 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

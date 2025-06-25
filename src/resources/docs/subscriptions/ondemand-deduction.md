@@ -512,15 +512,3 @@ The subscription order reference of the subscription link
 > ## 📘  Note
 >
 > Refer to [Ondemand Deduction Request](https://docs.portone.cloud/reference/post_api-subscription-creatededuction) for the complete list of ondemand deduction request parameters.
-
-Updated7 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

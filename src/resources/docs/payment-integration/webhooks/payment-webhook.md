@@ -459,15 +459,3 @@ The JSON object of instalment details of the transaction
 > ##### _integer_ · The number of months for the installment   [Skip link to [object Object]](https://docs.portone.cloud/docs/payment-webhook\#integer-%C2%B7-the-number-of-months-for-the-installment)
 
 * * *
-
-Updated6 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

@@ -11,35 +11,11 @@ integration\_android
 
 [integration\_android](https://www.loom.com/share/d2cedc7893234ec386123e57aead1ccf?source=embed_watch_on_loom_cta "integration_android")
 
-3 min
-
-0 views
-
-0
-
-[Open video in Loom](https://www.loom.com/share/d2cedc7893234ec386123e57aead1ccf?source=embed_watch_on_loom_cta "Open video in Loom")
-
-1.2×
-
-3 min⚡️4 min 21 sec3 min 28 sec2 min 54 sec2 min 19 sec2 min 2 sec1 min 44 sec1 min 23 sec
-
 Your user agent does not support the HTML5 Video element.
 
 ![](https://cdn.loom.com/avatars/default-avatar.svg)
 
 [integration\_android](https://www.loom.com/share/d2cedc7893234ec386123e57aead1ccf?source=embed_watch_on_loom_cta "integration_android")
-
-3 min
-
-0 views
-
-0
-
-[Open video in Loom](https://www.loom.com/share/d2cedc7893234ec386123e57aead1ccf?source=embed_watch_on_loom_cta "Open video in Loom")
-
-1.2×
-
-3 min⚡️4 min 21 sec3 min 28 sec2 min 54 sec2 min 19 sec2 min 2 sec1 min 44 sec1 min 23 sec
 
 * * *
 
@@ -705,43 +681,3 @@ Receiving the payment status within the override method `onActivityResult` is a 
    - price
    - promo\_discount (0 accepted)
    - shipping\_charges (0 accepted)
-
-Updated6 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-🦉
-
-# Recipe Title
-
-Recipe Description
-
-​x
-
-```
-
-```
-
-1{"success":true}
-
-🦉
-
-# Recipe Title
-
-Recipe Description
-
-​x
-
-```
-
-```
-
-1{"success":true}
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

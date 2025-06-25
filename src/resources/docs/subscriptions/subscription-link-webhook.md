@@ -362,16 +362,3 @@ Period configured for the trial duration
 
 This boolean flag indicates whether the subscription is currently in the trial phase.
 
-* * *
-
-Updated4 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

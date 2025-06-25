@@ -102,15 +102,3 @@ PortOne Invoices is a versatile solution designed to cater to a wide range of bu
 
 - **Scenario**: Schools, colleges, and other educational institutions often collect fees, donations, or other payments from students and donors.
 - **Use case**: Enables the generation of detailed invoices for tuition fees, exam fees, or special programs. Tracks invoice payment statuses and sends automated reminders to parents or students for overdue invoice payments.
-
-Updated6 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

@@ -90,15 +90,3 @@ JavaScript
 
 - [Inicis Official Website](https://inicis.com/)
 - [Inicis Documentation](https://manual.inicis.com/jppay/cbtauth.html)
-
-Updated3 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

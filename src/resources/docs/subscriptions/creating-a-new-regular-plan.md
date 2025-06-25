@@ -113,15 +113,3 @@ The **frequency number** specifies how many intervals occur within the chosen pe
 2. **Regular Plan Configuration**: Do not enable the "On Demand" option for Regular Plans.
 3. **Additional Notes**: Use this feature to provide extra information to customers as needed.
 4. **Accuracy**: Double-check all entered details before creating the plan.
-
-Updated6 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

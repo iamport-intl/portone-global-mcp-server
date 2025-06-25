@@ -128,15 +128,3 @@ Enjoy uninterrupted transactions with real-time monitoring, ensuring your paymen
 **Comprehensive Dashboard**
 
 Gain full control over your payment operations with an intuitive dashboard, allowing you to manage PSP credentials, monitor transactions, and receive real-time updates.
-
-Updated7 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

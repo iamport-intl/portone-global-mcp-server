@@ -62,15 +62,3 @@ To mark ATM, CVS, or barcode transactions as successful:
 
 - [API Docs](https://developers.ecpay.com.tw/?page_id=26797)
 - [Test Details](https://developers.ecpay.com.tw/?p=16447)
-
-Updated7 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

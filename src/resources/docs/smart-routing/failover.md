@@ -101,15 +101,3 @@ JSON
 | PSP Error - Primary Fails | PSP A & PSP B | 2 | PSP A & PSP B | 1\. Payment Initiated<br>2\. Redirect to PSP A<br>3\. PSP A Fails<br>4\. Redirect to Intermediate Page<br>5\. Retry with PSP B | Payment Successful with PSP B | Webhook & Redirection - PSP B details |
 | PSP Error - Secondary Also Fails | PSP A & PSP B | 2 | PSP A & PSP B | 1\. Payment Initiated<br>2\. Redirect to PSP A<br>3\. PSP A Fails<br>4\. Redirect to Intermediate Page<br>5\. Retry with PSP B<br>6\. PSP B Fails<br>7\. Redirect to Intermediate Page<br>8\. Cancel | Payment Failed with no Retry Attempts | Webhook & Redirection - PSP B details |
 | User Error (e.g OTP incorrect) | PSP A & PSP B | 2 | PSP A | 1\. Payment Initiated<br>2\. Redirect to PSP A<br>3\. 3DS Check<br>4\. Redirect to Intermediate Page<br>5\. Retry with PSP A | Payment Successful with PSP A | Webhook & Redirection - PSP A details |
-
-Updated8 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

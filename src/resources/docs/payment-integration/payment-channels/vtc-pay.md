@@ -103,15 +103,3 @@ JavaScript
 
 - [VTCPay Integration guide](https://vtcpay.vn/tai-lieu-tich-hop-website)
 - [VTCPay Testing Data](https://vtcpay.vn/tai-lieu-tich-hop-website#phuluc1)
-
-Updated8 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

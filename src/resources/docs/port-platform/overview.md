@@ -82,15 +82,3 @@ Your user agent does not support the HTML5 Video element.
 **Access Control**: The master merchant retains full control over sub-merchant permissions and can define the scope of their access to reports, transaction management, and more.
 
 **Audit Logging**: All sub-merchant activities are logged and can be audited by the master merchant for compliance and oversight.
-
-Updated7 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

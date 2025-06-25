@@ -60,13 +60,3 @@ JavaScript
 ### Reference links   [Skip link to Reference links](https://docs.portone.cloud/docs/eximbay\#reference-links)
 
 - [API Docs](https://developer.eximbay.com/eximbay/api_list/reference.html)
-
-Updated3 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No

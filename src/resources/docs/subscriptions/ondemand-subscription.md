@@ -493,15 +493,3 @@ The URL to redirect to after a successful subscription
 > ## 📘  Note
 >
 > Refer to [Subscription Request](https://docs.portone.cloud/reference/post_api-subscription-createsubscription) for the complete list of subscription request parameters.
-
-Updated7 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

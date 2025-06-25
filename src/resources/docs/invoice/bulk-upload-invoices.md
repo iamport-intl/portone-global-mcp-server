@@ -167,15 +167,3 @@ Once the upload is completed successfully:
 - Resolve errors promptly using the error sheet to minimize delays.
 
 By following these steps, you can efficiently upload, manage, and track bulk invoices in PortOne!
-
-Updated6 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)

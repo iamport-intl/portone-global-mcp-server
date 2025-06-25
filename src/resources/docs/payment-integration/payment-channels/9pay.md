@@ -99,15 +99,3 @@ JavaScript
 ### Reference links   [Skip link to Reference links](https://docs.portone.cloud/docs/9pay\#reference-links)
 
 - [Ninepay integration](https://github.com/iamport-intl/Integration-documents/blob/master/%5B9Pay%5D%20API%20Documents.pdf)
-
-Updated8 months ago
-
-* * *
-
-Did this page help you?
-
-Yes
-
-No
-
-![Help](https://cdn.jsdelivr.net/gh/iamport-intl/portone-devx-chatbot-widget@production/public/chat-intro1.svg)
